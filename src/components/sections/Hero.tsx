@@ -63,6 +63,7 @@ export const Hero: React.FC<HeroProps> = ({ t }) => {
                   <span className="text-xs font-black text-black whitespace-nowrap">{t.topRated}</span>
                </div>
                <span className="text-[10px] text-black/40 font-medium whitespace-nowrap">{t.secondary}</span>
+               {t.urgency && <span className="text-[10px] text-brand-red font-bold whitespace-nowrap animate-pulse">{t.urgency}</span>}
             </div>
           </div>
         </div>

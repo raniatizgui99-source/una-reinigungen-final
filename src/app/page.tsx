@@ -7,7 +7,10 @@ import { Services } from '@/components/sections/Services';
 import { About } from '@/components/sections/About';
 import { LeadForm } from '@/components/sections/LeadForm';
 import { FAQ } from '@/components/sections/FAQ';
+import { Guarantee } from '@/components/sections/Guarantee';
+import { Testimonials } from '@/components/sections/Testimonials';
 import { Footer } from '@/components/layout/Footer';
+import { StickyCTA } from '@/components/layout/StickyCTA';
 import { LegalPage, ImprintContent, PrivacyContent } from '@/components/pages/LegalPage';
 import { Language, translations } from '@/i18n/translations';
 
@@ -73,6 +76,10 @@ const App: React.FC = () => {
             <WhyUs t={t.whyUs} />
           </section>
 
+          <section id="reviews">
+            <Testimonials currentLang={lang} />
+          </section>
+
           <section id="process" className="py-24 md:py-40 px-6 bg-black text-white overflow-hidden relative">
              <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-16 md:mb-24 space-y-6">
@@ -102,6 +109,10 @@ const App: React.FC = () => {
             <Services t={t.services} />
           </section>
 
+          <section id="guarantee">
+            <Guarantee currentLang={lang} />
+          </section>
+
           <section id="about" className="bg-white">
             <About t={t.about} />
           </section>
@@ -116,6 +127,7 @@ const App: React.FC = () => {
         </main>
 
         <Footer t={t.footer} currentLang={lang} toggleLanguage={toggleLanguage} onNavigate={navigateTo} />
+        <StickyCTA currentLang={lang} />
       </div>
     </div>
   );

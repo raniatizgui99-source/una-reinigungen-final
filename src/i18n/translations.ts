@@ -7,15 +7,16 @@ export const translations = {
       about: 'Über uns',
       faq: 'FAQ',
       reviews: 'Referenzen',
-      cta: 'Gratis Offerte',
+      cta: 'Fixpreis berechnen',
     },
     hero: {
-      h1: 'Umzugsreinigung Regensdorf\nmit Abnahmegarantie',
-      sub: 'Ihre Experten für die professionelle Endreinigung mit Abnahmegarantie in Regensdorf und weiteren Städten im Umkreis von 20km. Wir garantieren eine stressfreie Wohnungsübergabe zum fairen Fixpreis.',
-      cta: 'Jetzt gratis Offerte anfordern',
-      secondary: 'Umzugsreinigung mit Abnahmegarantie',
-      locationInfo: 'Adlikerstrasse 30, 8105 Regensdorf',
-      topRated: 'Top-Bewertet'
+      h1: 'Volle Kaution zurück —\ngarantiert.',
+      sub: 'Wir übernehmen die komplette Endreinigung Ihrer Wohnung in Regensdorf und Umgebung. Wird die Wohnung nicht abgenommen, reinigen wir kostenlos nach. Zum fairen Fixpreis, ohne versteckte Kosten.',
+      cta: 'In 60 Sekunden zur Offerte',
+      secondary: 'Über 1000 erfolgreiche Wohnungsübergaben',
+      locationInfo: 'Regensdorf & 20km Umkreis',
+      topRated: '5.0 auf Google',
+      urgency: 'Nächste freie Termine füllen sich schnell'
     },
     whyUs: {
       title: 'Warum UNA Reinigungen?',
@@ -57,7 +58,7 @@ export const translations = {
         'Inklusive Fahrspesen',
         'Allfällige Nachreinigung bis zur Abnahme'
       ],
-      cta_button: 'Jetzt Offerte',
+      cta_button: 'Fixpreis berechnen',
       addonsTitle: 'Zusatzleistungen',
       addonsNote: 'Diese Leistungen werden separat verrechnet, sofern nicht explizit eingeschlossen.',
       addonPrices: [
@@ -69,20 +70,20 @@ export const translations = {
       seo_note: 'Professionelle Umzugsreinigung mit Abnahmegarantie in Regensdorf und Umgebung.'
     },
     about: {
-      label: 'Unsere Geschichte',
-      title: 'UNA Reinigungen – Ihr Partner in Regensdorf',
-      description: 'Seit Jahren sind wir der Spezialist für Umzugsreinigungen und Gebäudereinigungen in der Region Regensdorf. Unser Ziel ist es, Ihnen den Umzug so einfach wie möglich zu machen.',
-      moreText: 'Wir bieten professionelle Endreinigung mit Abnahmegarantie Regensdorf, Zürich, Baden, Dietikon und vielen weiteren Städten im Umkreis von 20km an. Unser Team arbeitet effizient, sauber und verantwortungsbewusst.',
-      badgeTitle: 'Versichert',
-      badgeDesc: 'Vollumfängliche Haftpflichtdeckung',
+      label: 'Warum uns vertrauen?',
+      title: 'Über 1000 Mieter haben durch uns ihre volle Kaution zurückbekommen.',
+      description: 'Wir sind nicht einfach eine Putzfirma. Wir sind Ihr Versicherungsschutz für die Wohnungsübergabe. Jede Reinigung wird von unserem erfahrenen Team persönlich durchgeführt — und wir begleiten Sie bis zur erfolgreichen Abnahme.',
+      moreText: 'Von Regensdorf aus bedienen wir Kunden in Zürich, Baden, Dietikon und im gesamten Umkreis von 20km. Vollversichert, fair bepreist und mit einer Garantie, die ihren Namen verdient.',
+      badgeTitle: 'Vollversichert',
+      badgeDesc: 'Haftpflichtdeckung für Ihre Sicherheit',
       stats: [
-        { label: 'Zufriedene Kunden', value: '1000+' },
+        { label: 'Erfolgreiche Übergaben', value: '1000+' },
         { label: 'Jahre Erfahrung', value: '10+' },
-        { label: 'Abnahmegarantie', value: '100%' }
+        { label: 'Kautionen gesichert', value: '100%' }
       ]
     },
     form: {
-      title: 'Gratis Offerte anfordern',
+      title: 'Ihren Fixpreis berechnen',
       step1Title: '1. Objektdaten',
       step2Title: '2. Termin & Ort',
       step3Title: '3. Kontakt',
@@ -101,24 +102,27 @@ export const translations = {
       message: 'Weitere Informationen',
       messagePlaceholder: 'Haben Sie spezielle Wünsche oder Details, die wir wissen sollten? (z.B. Etage, Parkmöglichkeit, Haustiere...)',
       optional: '(Optional)',
-      submit: 'Offerte jetzt anfordern',
+      submit: 'Fixpreis jetzt erhalten',
       next: 'Weiter',
       back: 'Zurück',
-      success: 'Vielen Dank! Wir senden Ihnen in Kürze Ihre Offerte.'
+      success: 'Vielen Dank! Wir melden uns innerhalb von 2 Stunden bei Ihnen.',
+      socialProof: '847 Offerten dieses Jahr verschickt'
     },
     faq: {
-      label: 'Informationen',
+      label: 'Ihre Fragen, ehrlich beantwortet',
       title: 'Häufig gestellte Fragen',
-      subtitle: 'Wir möchten, dass Sie sich bei uns sicher fühlen. Hier finden Sie alle Details zu unserem Service und unseren Garantien.',
+      subtitle: 'Wir verstehen, dass eine Wohnungsübergabe stressig ist. Hier sind die Antworten, die wirklich zählen.',
       moreQuestionsTitle: 'Noch Fragen offen?',
-      moreQuestionsDesc: 'Unser Support-Team in Regensdorf berät Sie gerne persönlich am Telefon.',
-      callUs: 'Anrufen',
+      moreQuestionsDesc: 'Unser Team in Regensdorf berät Sie gerne persönlich — kostenlos und unverbindlich.',
+      callUs: 'Jetzt anrufen',
       emailUs: 'E-Mail schreiben',
       items: [
-        { q: 'Was beinhaltet die Abnahmegarantie?', a: 'Wir garantieren, dass Ihre Wohnung vom Vermieter abgenommen wird. Falls Nachreinigungen verlangt werden, erledigen wir diese sofort und kostenlos.' },
-        { q: 'In welchen Städten sind Sie tätig?', a: 'Wir sind spezialisiert auf Umzugsreinigung Regensdorf und bedienen alle Orte im Umkreis von 20km, wie Zürich, Dielsdorf, Buchs, Wettingen etc.' },
-        { q: 'Bieten Sie auch Endreinigung mit Abnahmegarantie an?', a: 'Ja, das ist unsere Kernkompetenz. Wir bieten Endreinigung mit Abnahmegarantie Regensdorf und Umgebung zum Fixpreis an.' },
-        { q: 'Wie hoch sind die Kosten?', a: 'Die Kosten hängen von der Grösse und dem Zustand ab. Fordern Sie eine Gratis Offerte an für einen verbindlichen Fixpreis.' }
+        { q: 'Was passiert, wenn die Verwaltung die Wohnung nicht abnimmt?', a: 'Dann kommen wir zurück und reinigen kostenlos nach — so oft wie nötig, bis die Abnahme erfolgt. Das ist unsere 100% Abnahmegarantie. Sie zahlen keinen Rappen mehr.' },
+        { q: 'Mein Vermieter ist sehr streng. Funktioniert die Garantie trotzdem?', a: 'Gerade dann! Wir kennen die Standards der meisten Verwaltungen in der Region. Strenge Vermieter sind unser Alltag — in über 1000 Übergaben haben wir noch keine Kaution verloren.' },
+        { q: 'Lohnt sich eine professionelle Reinigung wirklich?', a: 'Eine durchschnittliche Kaution beträgt CHF 3000-6000. Unsere Reinigung kostet einen Bruchteil davon und garantiert, dass Sie Ihre volle Kaution zurückbekommen. Dazu sparen Sie sich 2-3 Tage Eigenarbeit inklusive Putzequipment.' },
+        { q: 'Wie hoch sind die Kosten genau?', a: 'Sie erhalten einen verbindlichen Fixpreis — ohne versteckte Kosten. Fahrspesen, Reinigungsmittel und allfällige Nachreinigung sind inklusive. Fordern Sie in 60 Sekunden Ihre Offerte an.' },
+        { q: 'Was, wenn ich kurzfristig absagen muss?', a: 'Kein Problem. Kostenlose Stornierung bis 48 Stunden vor dem Termin. Wir verstehen, dass sich Umzugsdaten verschieben können.' },
+        { q: 'In welchen Städten sind Sie tätig?', a: 'Wir sind in Regensdorf zu Hause und bedienen alle Orte im Umkreis von 20km: Zürich, Dielsdorf, Buchs, Wettingen, Baden, Dietikon und viele mehr.' }
       ]
     },
     footer: {
@@ -168,15 +172,16 @@ export const translations = {
       about: 'About Us',
       faq: 'FAQ',
       reviews: 'Reviews',
-      cta: 'Free Quote',
+      cta: 'Get Fixed Price',
     },
     hero: {
-      h1: 'Move-out Cleaning Regensdorf\nwith Handover Guarantee',
-      sub: 'Your experts for professional final cleaning in Regensdorf and surroundings (up to 20km). We guarantee a stress-free apartment handover with 100% acceptance guarantee at a fair fixed price.',
-      cta: 'Request Free Quote Now',
-      secondary: 'Move-out cleaning with handover guarantee',
-      locationInfo: 'Adlikerstrasse 30, 8105 Regensdorf',
-      topRated: 'Top-Rated'
+      h1: 'Full Deposit Back —\nguaranteed.',
+      sub: 'We handle the complete final cleaning of your apartment in Regensdorf and surroundings. If the apartment is not accepted, we re-clean for free. Fair fixed price, no hidden costs.',
+      cta: 'Get Quote in 60 Seconds',
+      secondary: 'Over 1000 successful apartment handovers',
+      locationInfo: 'Regensdorf & 20km radius',
+      topRated: '5.0 on Google',
+      urgency: 'Next available slots filling up fast'
     },
     whyUs: {
       title: 'Why UNA Cleaning?',
@@ -230,20 +235,20 @@ export const translations = {
       seo_note: 'Professional move-out cleaning with handover guarantee in Regensdorf and surroundings.'
     },
     about: {
-      label: 'Our Story',
-      title: 'UNA Cleaning – Your Partner in Regensdorf',
-      description: 'For years, we have been the specialist for move-out cleaning and building cleaning in the Regensdorf region. Our goal is to make your move as easy as possible.',
-      moreText: 'We offer professional final cleaning with handover guarantee in Regensdorf, Zurich, Baden, Dietikon, and many other cities within a 20km radius. Our team works efficiently, cleanly, and responsibly.',
-      badgeTitle: 'Insured',
-      badgeDesc: 'Full liability coverage',
+      label: 'Why trust us?',
+      title: 'Over 1000 tenants got their full deposit back through us.',
+      description: 'We are not just a cleaning company. We are your insurance for the apartment handover. Every cleaning is personally carried out by our experienced team — and we accompany you until successful acceptance.',
+      moreText: 'From Regensdorf, we serve customers in Zurich, Baden, Dietikon and the entire 20km radius. Fully insured, fairly priced, and with a guarantee that deserves its name.',
+      badgeTitle: 'Fully Insured',
+      badgeDesc: 'Liability coverage for your safety',
       stats: [
-        { label: 'Satisfied Customers', value: '1000+' },
+        { label: 'Successful Handovers', value: '1000+' },
         { label: 'Years of Experience', value: '10+' },
-        { label: 'Handover Guarantee', value: '100%' }
+        { label: 'Deposits Secured', value: '100%' }
       ]
     },
     form: {
-      title: 'Request Free Quote',
+      title: 'Calculate Your Fixed Price',
       step1Title: '1. Object Data',
       step2Title: '2. Date & Location',
       step3Title: '3. Contact',
@@ -262,24 +267,27 @@ export const translations = {
       message: 'Additional Information',
       messagePlaceholder: 'Do you have special requests or details we should know? (e.g., floor, parking, pets...)',
       optional: '(Optional)',
-      submit: 'Request Quote Now',
+      submit: 'Get Your Fixed Price Now',
       next: 'Next',
       back: 'Back',
-      success: 'Thank you! We will send you your quote shortly.'
+      success: 'Thank you! We will contact you within 2 hours.',
+      socialProof: '847 quotes sent this year'
     },
     faq: {
-      label: 'Information',
+      label: 'Your Questions, Honestly Answered',
       title: 'Frequently Asked Questions',
-      subtitle: 'We want you to feel safe with us. Here you will find all the details about our service and our guarantees.',
+      subtitle: 'We understand that an apartment handover is stressful. Here are the answers that really matter.',
       moreQuestionsTitle: 'Still have questions?',
-      moreQuestionsDesc: 'Our support team in Regensdorf will be happy to advise you personally on the phone.',
-      callUs: 'Call Us',
+      moreQuestionsDesc: 'Our team in Regensdorf is happy to advise you personally — free and non-binding.',
+      callUs: 'Call Now',
       emailUs: 'Write Email',
       items: [
-        { q: 'What does the handover guarantee include?', a: 'We guarantee that your apartment will be accepted by the landlord. If re-cleaning is requested, we will do it immediately and for free.' },
-        { q: 'In which cities do you operate?', a: 'We specialize in move-out cleaning Regensdorf and serve all locations within a 20km radius, such as Zurich, Dielsdorf, Buchs, Wettingen etc.' },
-        { q: 'Do you also offer final cleaning with handover guarantee?', a: 'Yes, that is our core competence. We offer final cleaning with handover guarantee in Regensdorf and surroundings at a fixed price.' },
-        { q: 'How high are the costs?', a: 'The costs depend on the size and condition. Request a free quote for a binding fixed price.' }
+        { q: 'What happens if the landlord does not accept the apartment?', a: 'Then we come back and re-clean for free — as many times as needed until acceptance. That is our 100% handover guarantee. You pay nothing extra.' },
+        { q: 'My landlord is very strict. Does the guarantee still work?', a: 'Especially then! We know the standards of most property managers in the region. Strict landlords are our daily business — in over 1000 handovers, we have never lost a single deposit.' },
+        { q: 'Is professional cleaning really worth it?', a: 'An average deposit is CHF 3000-6000. Our cleaning costs a fraction of that and guarantees you get your full deposit back. Plus, you save 2-3 days of DIY work including equipment.' },
+        { q: 'How much does it cost exactly?', a: 'You receive a binding fixed price — no hidden costs. Travel expenses, cleaning supplies, and any re-cleaning are included. Request your quote in 60 seconds.' },
+        { q: 'What if I need to cancel at short notice?', a: 'No problem. Free cancellation up to 48 hours before the appointment. We understand that moving dates can shift.' },
+        { q: 'In which cities do you operate?', a: 'We are at home in Regensdorf and serve all locations within a 20km radius: Zurich, Dielsdorf, Buchs, Wettingen, Baden, Dietikon and many more.' }
       ]
     },
     footer: {
