@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import { Check, ShieldCheck, Zap, ArrowRight, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';

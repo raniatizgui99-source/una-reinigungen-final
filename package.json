@@ -2,32 +2,26 @@
   "name": "una-reinigungen---landing-page-wireframe",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "tsx server/index.ts",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "tsc --noEmit"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "cors": "^2.8.6",
     "dom-to-image-more": "2.9.5",
-    "express": "^5.2.1",
     "html2canvas": "1.4.1",
     "lucide-react": "0.460.0",
     "motion": "^12.35.2",
+    "next": "15.2.0",
     "nodemailer": "^8.0.2",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "tsx": "^4.21.0"
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.6",
     "@types/node": "^22.14.0",
     "@types/nodemailer": "^7.0.11",
-    "@vitejs/plugin-react": "^5.0.0",
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "@types/react": "19.2.14",
+    "typescript": "~5.8.2"
   }
 }
