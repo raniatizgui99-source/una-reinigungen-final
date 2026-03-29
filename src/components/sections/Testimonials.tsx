@@ -14,40 +14,40 @@ const reviews = {
     readMore: 'Mehr ansehen',
     items: [
       {
-        name: 'Sandra M.',
-        initial: 'S',
+        name: 'Branimir Soldat',
+        initial: 'B',
         color: 'bg-purple-600',
-        timeAgo: 'vor 2 Wochen',
-        text: 'Unglaublich gründlich! Die Verwaltung hat die Wohnung ohne einzige Beanstandung abgenommen. Meine gesamte Kaution kam zurück. Absolute Empfehlung. Das Team war pünktlich, freundlich und hat selbst die schwierigsten Flecken im Backofen und Bad komplett entfernt. Ich musste mich um rein gar nichts kümmern.',
+        timeAgo: 'vor 2 Jahren',
+        text: 'Alles bestens. Das Team war pünktlich vor Ort und kam auch zur Wohnungsabgabe mit einem Mitarbeiter. Beanstandet wurde aber nichts seitens Verwaltung. Vielen Dank und gerne wieder.',
         isLocalGuide: true,
-        reviewCount: '14 Rezensionen'
+        reviewCount: '12 Rezensionen'
       },
       {
-        name: 'Marco T.',
+        name: 'Michael Hoffmann',
         initial: 'M',
         color: 'bg-blue-600',
-        timeAgo: 'vor 1 Monat',
-        text: 'Ich war skeptisch wegen der Abnahmegarantie, aber sie haben Wort gehalten. Eine kleine Nachreinigung wurde sofort und kostenlos erledigt. Top Service! Die Kommunikation im Vorfeld war extrem professionell und der Preis war genau wie auf der Offerte – keine bösen Überraschungen.',
+        timeAgo: 'vor 4 Monaten',
+        text: 'Tip top, kann ich voll und ganz weiterempfehlen. Hatte schon einige Umzüge hinter mir, aber noch nie so einfach, gut und preiswert wie mit Una-Reinigung.',
         isLocalGuide: false,
-        reviewCount: '3 Rezensionen'
+        reviewCount: '4 Rezensionen'
       },
       {
-        name: 'Lisa K.',
-        initial: 'L',
+        name: 'Jakub Tuleja',
+        initial: 'J',
         color: 'bg-green-600',
-        timeAgo: 'vor 2 Monaten',
-        text: 'Als berufstätige Mutter hatte ich keine Zeit für die Endreinigung. UNA hat alles perfekt übernommen und war sogar bei der Übergabe dabei. Stressfrei umgezogen! Werde sie bei meinem nächsten Umzug definitiv wieder buchen.',
+        timeAgo: 'vor 1 Monat',
+        text: 'Bester Preis, TOP-Qualität, mit Garantie für die Abnahme bei der Wohnungsübergabe, hervorragende Reinigung, freundlicher Service. Sehr empfehlenswert.',
         isLocalGuide: true,
-        reviewCount: '42 Rezensionen · 18 Fotos'
+        reviewCount: '34 Rezensionen · 5 Fotos'
       },
       {
-        name: 'Amir H.',
-        initial: 'A',
+        name: 'L. Lussi',
+        initial: 'L',
         color: 'bg-orange-600',
-        timeAgo: 'vor 3 Monaten',
-        text: 'Fairer Fixpreis, pünktlich und extrem sauber. Mein Vermieter war bekannt dafür, streng zu sein — trotzdem hat alles beim ersten Mal gepasst. Sehr zu empfehlen für alle, die auf Nummer sicher gehen wollen bei der Wohnungsübergabe.',
+        timeAgo: 'vor 3 Wochen',
+        text: 'Ich bin sehr zufrieden mit der Endreinigung meiner Wohnung. Herr Lukac war pünktlich und der Kontakt sehr angenehm. Kann ihn nur empfehlen.',
         isLocalGuide: false,
-        reviewCount: '1 Rezension'
+        reviewCount: '2 Rezensionen'
       }
     ]
   },
@@ -58,40 +58,40 @@ const reviews = {
     readMore: 'Read more',
     items: [
       {
-        name: 'Sandra M.',
-        initial: 'S',
+        name: 'Branimir Soldat',
+        initial: 'B',
         color: 'bg-purple-600',
-        timeAgo: '2 weeks ago',
-        text: 'Incredibly thorough! The management accepted the apartment without a single complaint. My entire deposit came back. Absolute recommendation. The team was punctual, friendly and completely removed even the toughest stains in the oven and bathroom.',
+        timeAgo: '2 years ago',
+        text: 'Everything perfect. The team arrived on time and even attended the apartment handover with an employee. The administration had zero complaints. Thank you very much, gladly again.',
         isLocalGuide: true,
-        reviewCount: '14 reviews'
+        reviewCount: '12 reviews'
       },
       {
-        name: 'Marco T.',
+        name: 'Michael Hoffmann',
         initial: 'M',
         color: 'bg-blue-600',
-        timeAgo: '1 month ago',
-        text: 'I was skeptical about the handover guarantee, but they kept their word. A small re-clean was done immediately and for free. Top service! The communication beforehand was extremely professional and the price was exactly as formulated.',
+        timeAgo: '4 months ago',
+        text: 'Tip top, I can fully recommend them. I have had several moves in the past, but it was never as easy, good and affordable as with Una-Reinigung.',
         isLocalGuide: false,
-        reviewCount: '3 reviews'
+        reviewCount: '4 reviews'
       },
       {
-        name: 'Lisa K.',
-        initial: 'L',
+        name: 'Jakub Tuleja',
+        initial: 'J',
         color: 'bg-green-600',
-        timeAgo: '2 months ago',
-        text: 'As a working mother, I had no time for the final cleaning. UNA handled everything perfectly and was even present at the handover. Moved stress-free! I will definitely book them again for my next move.',
+        timeAgo: 'a month ago',
+        text: 'Best price, TOP quality, with a guarantee for acceptance at the apartment handover, excellent cleaning, friendly service. Highly recommended.',
         isLocalGuide: true,
-        reviewCount: '42 reviews · 18 photos'
+        reviewCount: '34 reviews · 5 photos'
       },
       {
-        name: 'Amir H.',
-        initial: 'A',
+        name: 'L. Lussi',
+        initial: 'L',
         color: 'bg-orange-600',
-        timeAgo: '3 months ago',
-        text: 'Fair fixed price, on time and extremely clean. My landlord was known to be very strict — yet everything passed the first time. Highly recommended for anyone who wants to play it safe during the apartment handover.',
+        timeAgo: '3 weeks ago',
+        text: 'I am very satisfied with the final cleaning of my apartment. Mr. Lukac was punctual and the contact was very pleasant. Can only recommend him.',
         isLocalGuide: false,
-        reviewCount: '1 review'
+        reviewCount: '2 reviews'
       }
     ]
   }
