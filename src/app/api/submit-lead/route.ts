@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { prisma } from '@/lib/prisma';
 
 export async function POST(req: Request) {
   try {
@@ -8,6 +9,20 @@ export async function POST(req: Request) {
     if (!formData) {
       return NextResponse.json({ error: "Missing form data" }, { status: 400 });
     }
+
+    await prisma.lead.create({
+      data: {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        zip: formData.zip,
+        date: formData.date,
+        rooms: formData.rooms,
+        category: formData.category,
+        addons: formData.addons,
+        message: formData.message || '',
+      }
+    });
 
     const transporter = nodemailer.createTransport({
       service: 'gmail',
