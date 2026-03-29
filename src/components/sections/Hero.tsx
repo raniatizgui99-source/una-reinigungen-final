@@ -1,20 +1,23 @@
 import React from 'react';
 import { CheckCircle, ArrowRight, MapPin, Star } from 'lucide-react';
 
+import { HeroForm } from './HeroForm';
+
 interface HeroProps {
   t: any;
+  formT: any;
 }
 
-export const Hero: React.FC<HeroProps> = ({ t }) => {
+export const Hero: React.FC<HeroProps> = ({ t, formT }) => {
   return (
     <>
-      <div className="relative pt-24 pb-20 px-6 overflow-hidden bg-brand-cream">
+      <div className="relative pt-24 pb-20 px-6 overflow-hidden bg-brand-cream lg:min-h-[85vh] flex items-center">
         {/* High-end Modern Background with Image */}
         <div className="absolute inset-0 z-0">
           <img 
             src="https://files.catbox.moe/vmfe3p.jpg" 
             alt="Professional Cleaning Service" 
-            className="w-full h-full object-cover opacity-30 mix-blend-multiply"
+            className="w-full h-full object-cover opacity-20 mix-blend-multiply"
             referrerPolicy="no-referrer"
           />
           
@@ -31,40 +34,49 @@ export const Hero: React.FC<HeroProps> = ({ t }) => {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto flex flex-col items-center relative z-10 text-center">
-          <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-full mb-8 animate-fade-in border border-brand-red/10 shadow-sm">
-            <MapPin size={12} className="text-brand-red" />
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black whitespace-nowrap">
-              {t.locationInfo}
-            </span>
-          </div>
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            
+            {/* Left Column: Copy */}
+            <div className="lg:col-span-7 flex flex-col items-start text-left pt-8 lg:pt-0">
+              <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-full mb-8 animate-fade-in border border-brand-red/10 shadow-sm">
+                <MapPin size={12} className="text-brand-red" />
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-black whitespace-nowrap">
+                  {t.locationInfo}
+                </span>
+              </div>
 
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-6 md:mb-8 leading-[1.1] max-w-5xl text-black drop-shadow-sm whitespace-pre-line">
-            {t.h1}
-          </h1>
-          
-          <p className="text-[10px] sm:text-sm md:text-base lg:text-lg text-black/70 mb-8 md:mb-12 max-w-2xl mx-auto font-normal leading-relaxed px-4">
-            {t.sub}
-          </p>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-black tracking-tight mb-8 leading-[1.05] text-black drop-shadow-sm whitespace-pre-line">
+                {t.h1}
+              </h1>
+              
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl text-black/70 mb-10 max-w-xl font-medium leading-relaxed">
+                {t.sub}
+              </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full max-w-2xl px-4">
-            <a 
-              href="#quote-form" 
-              className="group w-full sm:w-auto bg-brand-red text-white text-sm md:text-base font-bold px-8 md:px-12 py-4 md:py-5 rounded-xl hover:bg-red-700 transition-all shadow-xl shadow-brand-red/20 flex items-center justify-center gap-3 transform hover:-translate-y-1 active:scale-95"
-            >
-              {t.cta}
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </a>
-            <div className="flex flex-col items-center sm:items-start space-y-0.5">
-               <div className="flex items-center gap-1.5 whitespace-nowrap">
-                  <div className="flex text-brand-red">
-                     {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="currentColor" />)}
-                  </div>
-                  <span className="text-xs font-black text-black whitespace-nowrap">{t.topRated}</span>
-               </div>
-               <span className="text-[10px] text-black/40 font-medium whitespace-nowrap">{t.secondary}</span>
-               {t.urgency && <span className="text-[10px] text-brand-red font-bold whitespace-nowrap animate-pulse">{t.urgency}</span>}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 w-full max-w-xl">
+                <div className="flex flex-col items-start space-y-1">
+                   <div className="flex items-center gap-1.5">
+                      <div className="flex text-brand-red">
+                         {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
+                      </div>
+                      <span className="text-sm font-black text-black">{t.topRated}</span>
+                   </div>
+                   <span className="text-xs text-black/40 font-bold">{t.secondary}</span>
+                   {t.urgency && (
+                     <span className="text-xs text-brand-red font-black mt-1 animate-pulse capitalize">
+                       🔥 {t.urgency}
+                     </span>
+                   )}
+                </div>
+              </div>
             </div>
+
+            {/* Right Column: Hero Form */}
+            <div className="lg:col-span-5 relative w-full xl:pl-8">
+               <HeroForm t={formT} />
+            </div>
+
           </div>
         </div>
       </div>

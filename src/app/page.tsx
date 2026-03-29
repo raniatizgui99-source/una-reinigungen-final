@@ -5,7 +5,6 @@ import { Hero } from '@/components/sections/Hero';
 import { WhyUs } from '@/components/sections/WhyUs';
 import { Services } from '@/components/sections/Services';
 import { About } from '@/components/sections/About';
-import { LeadForm } from '@/components/sections/LeadForm';
 import { FAQ } from '@/components/sections/FAQ';
 import { Guarantee } from '@/components/sections/Guarantee';
 import { Testimonials } from '@/components/sections/Testimonials';
@@ -69,7 +68,7 @@ const App: React.FC = () => {
         
         <main className="flex-grow">
           <section id="hero">
-            <Hero t={t.hero} />
+            <Hero t={t.hero} formT={(t as any).heroForm} />
           </section>
 
           <section id="why-us" className="bg-white border-y border-brand-cream">
@@ -117,11 +116,7 @@ const App: React.FC = () => {
             <About t={t.about} />
           </section>
 
-          <section id="quote-form" className="bg-black py-24 md:py-40 text-white">
-            <LeadForm t={t.form} currentLang={lang} />
-          </section>
-
-          <section id="faq" className="bg-white border-t border-brand-cream">
+          <section id="faq" className="bg-white">
             <FAQ t={t.faq} />
           </section>
         </main>

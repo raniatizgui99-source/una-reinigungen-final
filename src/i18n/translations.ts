@@ -164,6 +164,23 @@ export const translations = {
         rights: 'Ihre Rechte',
         rightsText: 'Sie haben ein Recht auf unentgeltliche Auskunft über Ihre bei uns gespeicherten Daten sowie ggf. ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten.'
       }
+    },
+    heroForm: {
+      title: 'Fixpreis berechnen',
+      step1: '1. Eckdaten',
+      step2: '2. Kontakt',
+      rooms: 'Zimmer',
+      zip: 'PLZ',
+      zipPlaceholder: '8105',
+      name: 'Vorname & Name',
+      email: 'E-Mail',
+      phone: 'Telefonnummer',
+      next: 'Weiter zur Offerte',
+      submit: 'Jetzt anfordern',
+      back: 'Zurück',
+      successTitle: 'Offerte angefordert!',
+      successText: 'Wir melden uns innerhalb von 2 Stunden mit Ihrem Fixpreis.',
+      roomsOptions: ['1.5 - 2.5', '3.5 - 4.5', '5.5+']
     }
   },
   en: {
@@ -329,6 +346,23 @@ export const translations = {
         rights: 'Your Rights',
         rightsText: 'You have a right to free information about your data stored by us and, if applicable, a right to correction, blocking or deletion of this data.'
       }
+    },
+    heroForm: {
+      title: 'Get Fixed Price',
+      step1: '1. Details',
+      step2: '2. Contact',
+      rooms: 'Rooms',
+      zip: 'ZIP',
+      zipPlaceholder: '8105',
+      name: 'Full Name',
+      email: 'Email',
+      phone: 'Phone Number',
+      next: 'Continue to Quote',
+      submit: 'Request Now',
+      back: 'Back',
+      successTitle: 'Quote Requested!',
+      successText: 'We will be in touch within 2 hours with your fixed price.',
+      roomsOptions: ['1.5 - 2.5', '3.5 - 4.5', '5.5+']
     }
   }
 };
