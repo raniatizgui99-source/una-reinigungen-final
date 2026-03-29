@@ -18,5 +18,6 @@ model Lead {
   category  String
   addons    String[]
   message   String
+  status    String   @default("NEW")
   createdAt DateTime @default(now())
 }
