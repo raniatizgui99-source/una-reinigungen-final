@@ -73,9 +73,9 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
           <h3 className="text-2xl sm:text-[32px] font-black tracking-tighter text-gray-900 leading-tight">
             {t.title}
           </h3>
-          <div className="flex items-center gap-2 bg-gray-50 border border-gray-100 px-4 py-2 rounded-full shrink-0">
+          <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/60 px-4 py-2 rounded-full shrink-0 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
              <div className={"w-2 h-2 rounded-full " + (step === 1 ? 'bg-brand-red animate-pulse' : 'bg-green-500')}></div>
-             <span className="text-[11px] font-bold text-gray-600 uppercase tracking-widest">
+             <span className="text-[11px] font-black text-slate-500 uppercase tracking-widest">
                 {step === 1 ? t.step1 : t.step2}
              </span>
           </div>
@@ -86,8 +86,8 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
             
             {/* Ultra Premium Segmented Control / Cards */}
             <div>
-              <label className="flex items-center gap-2 text-xs font-black text-gray-400 uppercase tracking-widest mb-4">
-                 <Sparkles size={14} className="text-gray-300" />
+              <label className="flex items-center gap-2 text-[11px] font-black text-slate-400 uppercase tracking-widest mb-4">
+                 <Sparkles size={14} className="text-amber-400" />
                  {t.rooms}
               </label>
               <div className="grid grid-cols-3 gap-3">
@@ -96,36 +96,48 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
                     key={room}
                     type="button"
                     onClick={() => setFormData({ ...formData, rooms: room })}
-                    className={"relative p-5 rounded-[1.25rem] border-2 text-base font-bold transition-all duration-300 overflow-hidden " + (
+                    className={"relative p-5 rounded-[1.25rem] border-2 text-base font-black transition-all duration-300 overflow-hidden group " + (
                       formData.rooms === room
-                        ? 'bg-brand-red/5 border-brand-red text-brand-red shadow-[0_8px_20px_rgba(201,48,44,0.12)] scale-[1.02]'
-                        : 'bg-gray-50/50 border-gray-100 text-gray-500 hover:bg-gray-50 hover:border-gray-200 hover:shadow-sm'
+                        ? 'bg-brand-red border-brand-red text-white shadow-[0_8px_20px_rgba(201,48,44,0.3),inset_0_2px_0_rgba(255,255,255,0.2)] scale-[1.02] -translate-y-1'
+                        : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)]'
                     )}
                   >
-                    {formData.rooms === room && (
-                       <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-brand-red/10 to-transparent rounded-bl-full"></div>
-                    )}
-                    <span className="relative z-10">{room}</span>
+                    <span className="relative z-10 flex flex-col items-center justify-center gap-1.5">
+                       {formData.rooms === room ? (
+                          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mb-1 shadow-inner">
+                             <CheckCircle2 size={16} className="text-white" />
+                          </div>
+                       ) : (
+                          <div className="w-8 h-8 bg-slate-50 rounded-full flex items-center justify-center mb-1 group-hover:bg-slate-100 transition-colors">
+                             <span className="text-slate-400 font-bold opacity-50">#</span>
+                          </div>
+                       )}
+                       {room}
+                    </span>
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Icon-Anchored Deep Input */}
+            {/* Icon-Anchored Deep Input a la Apple */}
             <div>
-              <label className="flex items-center gap-2 text-xs font-black text-gray-400 uppercase tracking-widest mb-4">
+              <label className="flex items-center gap-2 text-[11px] font-black text-slate-400 uppercase tracking-widest mb-4">
                  {t.zip}
               </label>
               <div className="relative group">
-                <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                  <MapPin size={22} className="text-gray-400 group-focus-within:text-brand-red transition-colors" />
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  {/* Apple 2.5D Style Icon Container */}
+                  <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-xl flex items-center justify-center shadow-[0_2px_4px_rgba(0,0,0,0.1),inset_0_1px_1px_rgba(255,255,255,0.3)]">
+                    <MapPin size={20} className="text-white drop-shadow-sm" />
+                  </div>
                 </div>
+                {/* Recessed physical input */}
                 <input
                   type="text"
                   placeholder={t.zipPlaceholder}
                   value={formData.zip}
                   onChange={(e) => setFormData({ ...formData, zip: e.target.value })}
-                  className="w-full bg-gray-50 border-2 border-transparent focus:border-brand-red rounded-[1.5rem] py-5 pl-14 pr-5 text-gray-900 focus:outline-none focus:bg-white focus:ring-4 focus:ring-brand-red/10 transition-all font-bold text-xl placeholder:text-gray-400 placeholder:font-medium shadow-inner"
+                  className="w-full bg-slate-50/50 border border-slate-200 focus:border-brand-red rounded-[1.5rem] py-5 pl-16 pr-5 text-gray-900 focus:outline-none focus:bg-white focus:ring-4 focus:ring-brand-red/10 transition-all font-black text-xl placeholder:text-slate-400/70 placeholder:font-bold shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]"
                 />
               </div>
             </div>
@@ -134,81 +146,87 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
             <button
               onClick={() => setStep(2)}
               disabled={!isStep1Valid}
-              className={"w-full py-6 rounded-[1.5rem] font-black text-lg flex items-center justify-center gap-3 transition-all duration-500 group relative overflow-hidden " + (
+              className={"w-full py-6 rounded-[1.5rem] font-black text-[19px] flex items-center justify-center gap-3 transition-all duration-500 group relative overflow-hidden " + (
                 isStep1Valid 
-                ? 'bg-gray-900 text-white hover:bg-black shadow-[0_15px_40px_rgba(0,0,0,0.2)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-1 cursor-pointer' 
-                : 'bg-gray-100 text-gray-300 cursor-not-allowed'
+                ? 'bg-gradient-to-b from-gray-800 to-black text-white hover:from-black hover:to-black shadow-[0_15px_40px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] hover:-translate-y-1 cursor-pointer' 
+                : 'bg-slate-100/80 border border-slate-200/50 text-slate-400 cursor-not-allowed shadow-none'
               )}
             >
               {isStep1Valid && (
                  <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
               )}
-              <span className="relative z-10">{t.next}</span>
+              <span className="relative z-10 drop-shadow-sm">{t.next}</span>
               <ArrowRight size={22} className={"relative z-10 " + (isStep1Valid ? 'group-hover:translate-x-1.5 transition-transform duration-300' : '')} />
             </button>
           </div>
         ) : (
           <div className="space-y-6 animate-in fade-in slide-in-from-right-8 duration-500">
             
-            <div className="space-y-4">
+            <div className="space-y-5">
                {/* Name Input */}
                <div className="relative group">
-                  <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                    <User size={22} className="text-gray-400 group-focus-within:text-brand-red transition-colors" />
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <div className="w-10 h-10 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-xl flex items-center justify-center shadow-[0_2px_4px_rgba(0,0,0,0.1),inset_0_1px_1px_rgba(255,255,255,0.3)]">
+                       <User size={20} className="text-white drop-shadow-sm" />
+                    </div>
                   </div>
                   <input
                     type="text"
                     placeholder={t.name}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-gray-50 border-2 border-transparent focus:border-brand-red rounded-[1.25rem] py-4 pl-14 pr-5 text-gray-900 focus:outline-none focus:bg-white focus:ring-4 focus:ring-brand-red/10 transition-all font-bold text-lg placeholder:text-gray-400 placeholder:font-medium shadow-inner"
+                    className="w-full bg-slate-50/50 border border-slate-200 focus:border-brand-red rounded-[1.25rem] py-4 pl-16 pr-5 text-gray-900 focus:outline-none focus:bg-white focus:ring-4 focus:ring-brand-red/10 transition-all font-bold text-lg placeholder:text-slate-400/70 placeholder:font-semibold shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]"
                   />
                </div>
                
                {/* Email Input */}
                <div className="relative group">
-                  <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                    <Mail size={22} className="text-gray-400 group-focus-within:text-brand-red transition-colors" />
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl flex items-center justify-center shadow-[0_2px_4px_rgba(0,0,0,0.1),inset_0_1px_1px_rgba(255,255,255,0.3)]">
+                       <Mail size={20} className="text-white drop-shadow-sm" />
+                    </div>
                   </div>
                   <input
                     type="email"
                     placeholder={t.email}
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-gray-50 border-2 border-transparent focus:border-brand-red rounded-[1.25rem] py-4 pl-14 pr-5 text-gray-900 focus:outline-none focus:bg-white focus:ring-4 focus:ring-brand-red/10 transition-all font-bold text-lg placeholder:text-gray-400 placeholder:font-medium shadow-inner"
+                    className="w-full bg-slate-50/50 border border-slate-200 focus:border-brand-red rounded-[1.25rem] py-4 pl-16 pr-5 text-gray-900 focus:outline-none focus:bg-white focus:ring-4 focus:ring-brand-red/10 transition-all font-bold text-lg placeholder:text-slate-400/70 placeholder:font-semibold shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]"
                   />
                </div>
                
                {/* Phone Input */}
                <div className="relative group">
-                  <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
-                    <Phone size={22} className="text-gray-400 group-focus-within:text-brand-red transition-colors" />
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <div className="w-10 h-10 bg-gradient-to-br from-fuchsia-500 to-purple-600 rounded-xl flex items-center justify-center shadow-[0_2px_4px_rgba(0,0,0,0.1),inset_0_1px_1px_rgba(255,255,255,0.3)]">
+                       <Phone size={20} className="text-white drop-shadow-sm" />
+                    </div>
                   </div>
                   <input
                     type="tel"
                     placeholder={t.phone}
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full bg-gray-50 border-2 border-transparent focus:border-brand-red rounded-[1.25rem] py-4 pl-14 pr-5 text-gray-900 focus:outline-none focus:bg-white focus:ring-4 focus:ring-brand-red/10 transition-all font-bold text-lg placeholder:text-gray-400 placeholder:font-medium shadow-inner"
+                    className="w-full bg-slate-50/50 border border-slate-200 focus:border-brand-red rounded-[1.25rem] py-4 pl-16 pr-5 text-gray-900 focus:outline-none focus:bg-white focus:ring-4 focus:ring-brand-red/10 transition-all font-bold text-lg placeholder:text-slate-400/70 placeholder:font-semibold shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]"
                   />
                </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-6 mt-4 border-t border-slate-100">
               <button
                 type="button"
                 onClick={() => setStep(1)}
-                className="w-full sm:w-auto px-8 py-5 rounded-[1.25rem] font-bold text-gray-500 bg-gray-50 hover:bg-gray-100 hover:text-gray-900 transition-all border-2 border-transparent"
+                className="w-full sm:w-auto px-8 py-5 rounded-[1.25rem] font-bold text-slate-500 bg-white border-2 border-slate-200 hover:border-slate-300 hover:text-slate-800 transition-all shadow-sm hover:shadow-md"
               >
                 {t.back}
               </button>
               <button
                 onClick={handleSubmit}
                 disabled={!isStep2Valid || isLoading}
-                className={"flex-1 py-5 rounded-[1.25rem] font-black text-lg flex items-center justify-center gap-3 transition-all duration-500 overflow-hidden relative group " + (
+                className={"flex-1 py-5 rounded-[1.25rem] font-black text-[19px] flex items-center justify-center gap-3 transition-all duration-500 overflow-hidden relative group " + (
                   isStep2Valid 
-                  ? 'bg-brand-red text-white hover:bg-red-700 shadow-[0_15px_40px_rgba(201,48,44,0.3)] hover:shadow-[0_20px_50px_rgba(201,48,44,0.4)] hover:-translate-y-1' 
-                  : 'bg-gray-100 text-gray-300 cursor-not-allowed'
+                  ? 'bg-gradient-to-b from-brand-red to-[#b22622] text-white hover:from-[#c92520] hover:to-[#9c1e1a] shadow-[0_15px_40px_rgba(201,48,44,0.35),inset_0_1px_1px_rgba(255,255,255,0.3)] hover:shadow-[0_20px_50px_rgba(201,48,44,0.5)] hover:-translate-y-1' 
+                  : 'bg-slate-100/80 border border-slate-200/50 text-slate-400 cursor-not-allowed shadow-none'
                 )}
               >
                 {isLoading ? (
@@ -216,16 +234,16 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
                 ) : (
                    <>
                      {isStep2Valid && (
-                       <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                       <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                      )}
-                     <span className="relative z-10">{t.submit}</span>
-                     <Sparkles size={20} className="relative z-10" />
+                     <span className="relative z-10 drop-shadow-sm">{t.submit}</span>
+                     <Sparkles size={20} className="relative z-10 drop-shadow-sm" />
                    </>
                 )}
               </button>
             </div>
             
-            <p className="text-center text-[11px] font-bold text-gray-400 pt-6 uppercase tracking-[0.15em]">{t.successText}</p>
+            <p className="text-center text-[11px] font-black text-slate-300 pt-6 uppercase tracking-[0.15em]">{t.successText}</p>
           </div>
         )}
       </div>

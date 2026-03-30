@@ -27,9 +27,6 @@ export const Hero: React.FC<HeroProps> = ({ t, formT }) => {
           
           {/* Smooth, bug-free, rich dark overlay to create absolute contrast for the White Form */}
           <div className="absolute inset-0 bg-slate-950/70"></div>
-          
-          {/* Subtle bottom fade to blend smoothly into the next white section */}
-          <div className="absolute bottom-0 w-full h-32 bg-gradient-to-t from-[#f8f9fa] to-transparent"></div>
         </div>
 
         <div className="max-w-4xl mx-auto relative z-10 w-full flex flex-col items-center">
