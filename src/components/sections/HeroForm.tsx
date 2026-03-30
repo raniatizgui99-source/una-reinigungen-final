@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle2, MapPin, User, Mail, Phone, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle2, MapPin, User, Mail, Phone } from 'lucide-react';
 
 interface HeroFormProps {
   t: any;
@@ -87,7 +87,6 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
             {/* Ultra Premium Segmented Control / Cards */}
             <div>
               <label className="flex items-center gap-2 text-[11px] font-black text-slate-400 uppercase tracking-widest mb-4">
-                 <Sparkles size={14} className="text-amber-400" />
                  {t.rooms}
               </label>
               <div className="grid grid-cols-3 gap-3">
@@ -105,11 +104,14 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
                     <span className="relative z-10 flex flex-col items-center justify-center gap-1.5">
                        {formData.rooms === room ? (
                           <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mb-1 shadow-inner">
-                             <CheckCircle2 size={16} className="text-white" />
+                             <CheckCircle2 size={16} className="text-white drop-shadow-sm" />
                           </div>
                        ) : (
-                          <div className="w-8 h-8 bg-slate-50 rounded-full flex items-center justify-center mb-1 group-hover:bg-slate-100 transition-colors">
-                             <span className="text-slate-400 font-bold opacity-50">#</span>
+                          <div className="w-8 h-8 bg-slate-50 border border-slate-200/60 rounded-full flex items-center justify-center mb-1 group-hover:bg-slate-100 group-hover:border-slate-300 transition-all shadow-[inset_0_1px_2px_rgba(0,0,0,0.04)]">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-slate-400">
+                               <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                               <polyline points="9 22 9 12 15 12 15 22"/>
+                             </svg>
                           </div>
                        )}
                        {room}
@@ -237,7 +239,7 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
                        <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                      )}
                      <span className="relative z-10 drop-shadow-sm">{t.submit}</span>
-                     <Sparkles size={20} className="relative z-10 drop-shadow-sm" />
+                     <ArrowRight size={20} className="relative z-10 drop-shadow-sm group-hover:translate-x-1.5 transition-transform duration-300" />
                    </>
                 )}
               </button>
