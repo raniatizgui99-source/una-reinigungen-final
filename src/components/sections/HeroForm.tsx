@@ -54,7 +54,7 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
 
   if (isSubmitted) {
     return (
-      <div className="bg-white/95 backdrop-blur-2xl rounded-[2.5rem] p-12 text-center animate-fade-in shadow-[0_20px_60px_rgba(0,0,0,0.06),0_0_0_1px_rgba(0,0,0,0.05)] w-full max-w-xl mx-auto relative z-20">
+      <div className="bg-white rounded-[2.5rem] p-12 text-center animate-fade-in shadow-[0_20px_50px_rgba(0,0,0,0.2),_0_0_0_1px_rgba(0,0,0,0.05)] w-full max-w-xl mx-auto relative z-20">
         <div className="w-24 h-24 bg-gradient-to-br from-green-50 to-emerald-100 rounded-full flex items-center justify-center mx-auto mb-8 text-emerald-500 shadow-inner border border-emerald-100/50">
           <CheckCircle2 size={40} className="stroke-[2.5]" />
         </div>
@@ -65,11 +65,8 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
   }
 
   return (
-    <div className="bg-white/95 backdrop-blur-3xl rounded-[2.5rem] p-8 sm:p-12 shadow-[0_30px_80px_rgba(0,0,0,0.08),0_0_0_1px_rgba(0,0,0,0.04)] relative overflow-visible w-full max-w-[42rem] mx-auto z-20 font-sans">
+    <div className="bg-white rounded-[2.5rem] p-8 sm:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.2),_0_0_0_1px_rgba(0,0,0,0.05)] relative overflow-visible w-full max-w-[42rem] mx-auto z-20 font-sans">
       
-      {/* Decorative Outer Ambient Glow tied to the form */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[120%] bg-brand-red/5 rounded-[4rem] blur-[80px] pointer-events-none -z-10"></div>
-
       <div className="space-y-10">
         
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-gray-100 pb-8">
