@@ -13,17 +13,18 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
   const [formData, setFormData] = useState({
     rooms: '',
     zip: '',
+    addons: [] as string[],
     name: '',
     email: '',
     phone: '',
   });
 
   const isStep1Valid = formData.rooms !== '' && formData.zip.length >= 4;
-  const isStep2Valid = formData.name.length > 2 && formData.email.includes('@') && formData.phone.length > 5;
+  const isFinalStepValid = formData.name.length > 2 && formData.email.includes('@') && formData.phone.length > 5;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isStep2Valid) return;
+    if (!isFinalStepValid) return;
 
     setIsLoading(true);
     try {
@@ -35,7 +36,6 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
             ...formData,
             date: 'TBD',
             category: 'Premium Hero Quote',
-            addons: [],
             message: 'Submitted via V3 Premium Hero Form.'
           }
         }),
@@ -74,14 +74,14 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
             {t.title}
           </h3>
           <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/60 px-4 py-2 rounded-full shrink-0 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
-             <div className={"w-2 h-2 rounded-full " + (step === 1 ? 'bg-brand-red animate-pulse' : 'bg-green-500')}></div>
+             <div className={"w-2 h-2 rounded-full " + (step === 1 || step === 2 ? 'bg-brand-red animate-pulse' : 'bg-green-500')}></div>
              <span className="text-[11px] font-black text-slate-500 uppercase tracking-widest">
-                {step === 1 ? t.step1 : t.step2}
+                {step === 1 ? t.step1 : step === 2 ? 'Zusatzleistungen' : t.step2}
              </span>
           </div>
         </div>
 
-        {step === 1 ? (
+        {step === 1 && (
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
             
             {/* Ultra Premium Segmented Control / Cards */}
@@ -161,7 +161,77 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
               <ArrowRight size={22} className={"relative z-10 " + (isStep1Valid ? 'group-hover:translate-x-1.5 transition-transform duration-300' : '')} />
             </button>
           </div>
-        ) : (
+        )}
+
+        {step === 2 && (
+          <div className="space-y-8 animate-in fade-in slide-in-from-right-8 duration-500">
+            <div>
+              <label className="flex items-center gap-2 text-[11px] font-black text-slate-400 uppercase tracking-widest mb-4">
+                 ZUSATZLEISTUNGEN
+              </label>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  'Balkon / Terrasse',
+                  'Keller / Estrich / Garage',
+                  'Teppich-Shamponnieren (80.-)',
+                  'Wintergarten (4.-/m2)',
+                  'Hochdruckreinigung (80.-)',
+                  'Raucherwohnung (250.-)'
+                ].map((addon) => (
+                  <button
+                    key={addon}
+                    type="button"
+                    onClick={() => {
+                        if (formData.addons.includes(addon)) {
+                            setFormData({ ...formData, addons: formData.addons.filter(a => a !== addon) });
+                        } else {
+                            setFormData({ ...formData, addons: [...formData.addons, addon] });
+                        }
+                    }}
+                    className={"relative p-4 rounded-[1.25rem] border-2 text-sm sm:text-base font-black transition-all duration-300 overflow-hidden group flex flex-col items-center text-center justify-center " + (
+                      formData.addons.includes(addon)
+                        ? 'bg-brand-red border-brand-red text-white shadow-[0_8px_20px_rgba(201,48,44,0.3),inset_0_2px_0_rgba(255,255,255,0.2)] scale-[1.02] -translate-y-1'
+                        : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)]'
+                    )}
+                  >
+                    <span className="relative z-10 flex flex-col items-center justify-center gap-2">
+                       {formData.addons.includes(addon) ? (
+                          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center mb-0.5 shadow-inner">
+                             <CheckCircle2 size={16} className="text-white drop-shadow-sm" />
+                          </div>
+                       ) : (
+                          <div className="w-8 h-8 bg-slate-50 border border-slate-200/60 rounded-full flex items-center justify-center mb-0.5 group-hover:bg-slate-100 group-hover:border-slate-300 transition-all shadow-[inset_0_1px_2px_rgba(0,0,0,0.04)]">
+                          </div>
+                       )}
+                       {addon}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 pt-6 mt-4 border-t border-slate-100">
+              <button
+                type="button"
+                onClick={() => setStep(1)}
+                className="w-full sm:w-auto px-8 py-5 rounded-[1.25rem] font-bold text-slate-500 bg-white border-2 border-slate-200 hover:border-slate-300 hover:text-slate-800 transition-all shadow-sm hover:shadow-md"
+              >
+                {t.back}
+              </button>
+              <button
+                type="button"
+                onClick={() => setStep(3)}
+                className="flex-1 py-5 rounded-[1.25rem] font-black text-[19px] flex items-center justify-center gap-3 transition-all duration-500 group relative overflow-hidden bg-gradient-to-b from-gray-800 to-black text-white hover:from-black hover:to-black shadow-[0_15px_40px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] hover:-translate-y-1"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                <span className="relative z-10 drop-shadow-sm">{t.next}</span>
+                <ArrowRight size={22} className="relative z-10 group-hover:translate-x-1.5 transition-transform duration-300" />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {step === 3 && (
           <div className="space-y-6 animate-in fade-in slide-in-from-right-8 duration-500">
             
             <div className="space-y-5">
@@ -217,16 +287,16 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
             <div className="flex flex-col sm:flex-row gap-4 pt-6 mt-4 border-t border-slate-100">
               <button
                 type="button"
-                onClick={() => setStep(1)}
+                onClick={() => setStep(2)}
                 className="w-full sm:w-auto px-8 py-5 rounded-[1.25rem] font-bold text-slate-500 bg-white border-2 border-slate-200 hover:border-slate-300 hover:text-slate-800 transition-all shadow-sm hover:shadow-md"
               >
                 {t.back}
               </button>
               <button
                 onClick={handleSubmit}
-                disabled={!isStep2Valid || isLoading}
+                disabled={!isFinalStepValid || isLoading}
                 className={"flex-1 py-5 rounded-[1.25rem] font-black text-[19px] flex items-center justify-center gap-3 transition-all duration-500 overflow-hidden relative group " + (
-                  isStep2Valid 
+                  isFinalStepValid 
                   ? 'bg-gradient-to-b from-brand-red to-[#b22622] text-white hover:from-[#c92520] hover:to-[#9c1e1a] shadow-[0_15px_40px_rgba(201,48,44,0.35),inset_0_1px_1px_rgba(255,255,255,0.3)] hover:shadow-[0_20px_50px_rgba(201,48,44,0.5)] hover:-translate-y-1' 
                   : 'bg-slate-100/80 border border-slate-200/50 text-slate-400 cursor-not-allowed shadow-none'
                 )}
@@ -235,7 +305,7 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
                    <div className="w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
                 ) : (
                    <>
-                     {isStep2Valid && (
+                     {isFinalStepValid && (
                        <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                      )}
                      <span className="relative z-10 drop-shadow-sm">{t.submit}</span>
