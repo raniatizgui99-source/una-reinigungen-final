@@ -14,12 +14,15 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
     rooms: '',
     zip: '',
     addons: [] as string[],
+    date: '',
+    serviceOption: '',
     name: '',
     email: '',
     phone: '',
   });
 
   const isStep1Valid = formData.rooms !== '' && formData.zip.length >= 4;
+  const isStep3Valid = formData.date !== '' && formData.serviceOption !== '';
   const isFinalStepValid = formData.name.length > 2 && formData.email.includes('@') && formData.phone.length > 5;
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -34,7 +37,6 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
         body: JSON.stringify({
           formData: {
             ...formData,
-            date: 'TBD',
             category: 'Premium Hero Quote',
             message: 'Submitted via V3 Premium Hero Form.'
           }
@@ -74,9 +76,9 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
             {t.title}
           </h3>
           <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/60 px-4 py-2 rounded-full shrink-0 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
-             <div className={"w-2 h-2 rounded-full " + (step === 1 || step === 2 ? 'bg-brand-red animate-pulse' : 'bg-green-500')}></div>
+             <div className={"w-2 h-2 rounded-full " + (step < 4 ? 'bg-brand-red animate-pulse' : 'bg-green-500')}></div>
              <span className="text-[11px] font-black text-slate-500 uppercase tracking-widest">
-                {step === 1 ? t.step1 : step === 2 ? 'Zusatzleistungen' : t.step2}
+                {step === 1 ? t.step1 : step === 2 ? 'Zusatzleistungen' : step === 3 ? 'Wunschdatum' : t.step2}
              </span>
           </div>
         </div>
@@ -232,6 +234,88 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
         )}
 
         {step === 3 && (
+          <div className="space-y-8 animate-in fade-in slide-in-from-right-8 duration-500">
+            <div>
+              <label className="flex items-center gap-2 text-[11px] font-black text-slate-400 uppercase tracking-widest mb-4">
+                 Wunschdatum
+              </label>
+              <div className="relative group">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-xl flex items-center justify-center shadow-[0_2px_4px_rgba(0,0,0,0.1),inset_0_1px_1px_rgba(255,255,255,0.3)]">
+                    <User size={20} className="text-white drop-shadow-sm" />
+                  </div>
+                </div>
+                <input
+                  type="date"
+                  value={formData.date}
+                  onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                  className="w-full bg-slate-50/50 border border-slate-200 focus:border-brand-red rounded-[1.5rem] py-5 pl-16 pr-5 text-gray-900 focus:outline-none focus:bg-white focus:ring-4 focus:ring-brand-red/10 transition-all font-black text-xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="flex items-center gap-2 text-[11px] font-black text-slate-400 uppercase tracking-widest mb-4">
+                 Gewünschte Option
+              </label>
+              <div className="grid grid-cols-1 gap-3">
+                {[
+                  'Umzugsreinigung mit Abnahmegarantie',
+                  'Umzugsreinigung ohne Abnahmegarantie'
+                ].map((option) => (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => setFormData({ ...formData, serviceOption: option })}
+                    className={"relative p-5 rounded-[1.25rem] border-2 text-left font-black transition-all duration-300 overflow-hidden group " + (
+                      formData.serviceOption === option
+                        ? 'bg-brand-red border-brand-red text-white shadow-[0_8px_20px_rgba(201,48,44,0.3),inset_0_2px_0_rgba(255,255,255,0.2)] scale-[1.01] -translate-y-0.5'
+                        : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)]'
+                    )}
+                  >
+                    <div className="relative z-10 flex items-center gap-4">
+                       {formData.serviceOption === option ? (
+                          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center shadow-inner shrink-0">
+                             <CheckCircle2 size={16} className="text-white drop-shadow-sm" />
+                          </div>
+                       ) : (
+                          <div className="w-8 h-8 bg-slate-50 border border-slate-200/60 rounded-full flex items-center justify-center group-hover:bg-slate-100 group-hover:border-slate-300 transition-all shadow-[inset_0_1px_2px_rgba(0,0,0,0.04)] shrink-0">
+                          </div>
+                       )}
+                       <span className="text-base sm:text-lg">{option}</span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 pt-6 mt-4 border-t border-slate-100">
+              <button
+                type="button"
+                onClick={() => setStep(2)}
+                className="w-full sm:w-auto px-8 py-5 rounded-[1.25rem] font-bold text-slate-500 bg-white border-2 border-slate-200 hover:border-slate-300 hover:text-slate-800 transition-all shadow-sm hover:shadow-md"
+              >
+                {t.back}
+              </button>
+              <button
+                type="button"
+                onClick={() => setStep(4)}
+                disabled={!isStep3Valid}
+                className={"flex-1 py-5 rounded-[1.25rem] font-black text-[19px] flex items-center justify-center gap-3 transition-all duration-500 group relative overflow-hidden " + (
+                  isStep3Valid 
+                  ? 'bg-gradient-to-b from-gray-800 to-black text-white hover:from-black hover:to-black shadow-[0_15px_40px_rgba(0,0,0,0.25),inset_0_1px_1px_rgba(255,255,255,0.1)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] hover:-translate-y-1' 
+                  : 'bg-slate-100/80 border border-slate-200/50 text-slate-400 cursor-not-allowed shadow-none'
+                )}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                <span className="relative z-10 drop-shadow-sm">{t.next}</span>
+                <ArrowRight size={22} className="relative z-10 group-hover:translate-x-1.5 transition-transform duration-300" />
+              </button>
+            </div>
+          </div>
+        )}
+
+        {step === 4 && (
           <div className="space-y-6 animate-in fade-in slide-in-from-right-8 duration-500">
             
             <div className="space-y-5">
@@ -287,7 +371,7 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
             <div className="flex flex-col sm:flex-row gap-4 pt-6 mt-4 border-t border-slate-100">
               <button
                 type="button"
-                onClick={() => setStep(2)}
+                onClick={() => setStep(3)}
                 className="w-full sm:w-auto px-8 py-5 rounded-[1.25rem] font-bold text-slate-500 bg-white border-2 border-slate-200 hover:border-slate-300 hover:text-slate-800 transition-all shadow-sm hover:shadow-md"
               >
                 {t.back}
