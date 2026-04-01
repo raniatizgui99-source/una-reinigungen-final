@@ -180,7 +180,11 @@ export const translations = {
       back: 'Zurück',
       successTitle: 'Offerte angefordert!',
       successText: 'Wir melden uns innerhalb von 2 Stunden mit Ihrem Fixpreis.',
-      roomsOptions: ['1.5 - 2.5', '3.5 - 4.5', '5.5+']
+      roomsOptions: ['1.5 - 2.5', '3.5 - 4.5', '5.5+'],
+      tabType: 'Reinigungstyp',
+      tabDate: 'Wunschdatum',
+      optionGarantie: 'Umzugsreinigung mit Abnahmegarantie',
+      optionNoGarantie: 'Umzugsreinigung ohne Abnahmegarantie'
     }
   },
   en: {
@@ -362,7 +366,11 @@ export const translations = {
       back: 'Back',
       successTitle: 'Quote Requested!',
       successText: 'We will be in touch within 2 hours with your fixed price.',
-      roomsOptions: ['1.5 - 2.5', '3.5 - 4.5', '5.5+']
+      roomsOptions: ['1.5 - 2.5', '3.5 - 4.5', '5.5+'],
+      tabType: 'Cleaning Type',
+      tabDate: 'Desired Date',
+      optionGarantie: 'Move-out cleaning with handover guarantee',
+      optionNoGarantie: 'Move-out cleaning without handover guarantee'
     }
   }
 };

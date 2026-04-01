@@ -20,6 +20,7 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
     email: '',
     phone: '',
   });
+  const [activeTab, setActiveTab] = useState<'type' | 'date'>('type');
 
   const isStep1Valid = formData.rooms !== '' && formData.zip.length >= 4;
   const isStep3Valid = formData.date !== '' && formData.serviceOption !== '';
@@ -78,7 +79,7 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
           <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/60 px-4 py-2 rounded-full shrink-0 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
              <div className={"w-2 h-2 rounded-full " + (step < 4 ? 'bg-brand-red animate-pulse' : 'bg-green-500')}></div>
              <span className="text-[11px] font-black text-slate-500 uppercase tracking-widest">
-                {step === 1 ? t.step1 : step === 2 ? 'Zusatzleistungen' : step === 3 ? 'Wunschdatum' : t.step2}
+                {step === 1 ? t.step1 : step === 2 ? 'Zusatzleistungen' : step === 3 ? 'Details' : t.step2}
              </span>
           </div>
         </div>
@@ -235,65 +236,102 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
 
         {step === 3 && (
           <div className="space-y-8 animate-in fade-in slide-in-from-right-8 duration-500">
-            <div>
-              <label className="flex items-center gap-2 text-[11px] font-black text-slate-400 uppercase tracking-widest mb-4">
-                 Wunschdatum
-              </label>
-              <div className="relative group">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-xl flex items-center justify-center shadow-[0_2px_4px_rgba(0,0,0,0.1),inset_0_1px_1px_rgba(255,255,255,0.3)]">
-                    <User size={20} className="text-white drop-shadow-sm" />
-                  </div>
-                </div>
-                <input
-                  type="date"
-                  value={formData.date}
-                  onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                  className="w-full bg-slate-50/50 border border-slate-200 focus:border-brand-red rounded-[1.5rem] py-5 pl-16 pr-5 text-gray-900 focus:outline-none focus:bg-white focus:ring-4 focus:ring-brand-red/10 transition-all font-black text-xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]"
-                />
-              </div>
+            {/* Ultra Premium Tab System */}
+            <div className="flex p-1.5 bg-slate-100/80 rounded-[1.25rem] border border-slate-200/50 shadow-inner">
+              <button
+                type="button"
+                onClick={() => setActiveTab('type')}
+                className={`flex-1 py-4 px-4 rounded-xl text-sm font-black transition-all duration-300 flex items-center justify-center gap-2 ${
+                  activeTab === 'type' 
+                    ? 'bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] text-gray-900 border border-slate-200/50' 
+                    : 'text-slate-400 hover:text-slate-600'
+                }`}
+              >
+                <div className={`w-2 h-2 rounded-full transition-all ${formData.serviceOption ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]' : 'bg-slate-300'}`}></div>
+                {t.tabType}
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('date')}
+                className={`flex-1 py-4 px-4 rounded-xl text-sm font-black transition-all duration-300 flex items-center justify-center gap-2 ${
+                  activeTab === 'date' 
+                    ? 'bg-white shadow-[0_4px_12px_rgba(0,0,0,0.08)] text-gray-900 border border-slate-200/50' 
+                    : 'text-slate-400 hover:text-slate-600'
+                }`}
+              >
+                <div className={`w-2 h-2 rounded-full transition-all ${formData.date ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]' : 'bg-slate-300'}`}></div>
+                {t.tabDate}
+              </button>
             </div>
 
-            <div>
-              <label className="flex items-center gap-2 text-[11px] font-black text-slate-400 uppercase tracking-widest mb-4">
-                 Gewünschte Option
-              </label>
-              <div className="grid grid-cols-1 gap-3">
-                {[
-                  'Umzugsreinigung mit Abnahmegarantie',
-                  'Umzugsreinigung ohne Abnahmegarantie'
-                ].map((option) => (
-                  <button
-                    key={option}
-                    type="button"
-                    onClick={() => setFormData({ ...formData, serviceOption: option })}
-                    className={"relative p-5 rounded-[1.25rem] border-2 text-left font-black transition-all duration-300 overflow-hidden group " + (
-                      formData.serviceOption === option
-                        ? 'bg-brand-red border-brand-red text-white shadow-[0_8px_20px_rgba(201,48,44,0.3),inset_0_2px_0_rgba(255,255,255,0.2)] scale-[1.01] -translate-y-0.5'
-                        : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)]'
-                    )}
-                  >
-                    <div className="relative z-10 flex items-center gap-4">
-                       {formData.serviceOption === option ? (
-                          <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center shadow-inner shrink-0">
-                             <CheckCircle2 size={16} className="text-white drop-shadow-sm" />
-                          </div>
-                       ) : (
-                          <div className="w-8 h-8 bg-slate-50 border border-slate-200/60 rounded-full flex items-center justify-center group-hover:bg-slate-100 group-hover:border-slate-300 transition-all shadow-[inset_0_1px_2px_rgba(0,0,0,0.04)] shrink-0">
-                          </div>
-                       )}
-                       <span className="text-base sm:text-lg">{option}</span>
-                    </div>
-                  </button>
-                ))}
+            {activeTab === 'type' ? (
+              <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-400">
+                <div className="grid grid-cols-1 gap-4">
+                  {[
+                    { id: 'garantie', label: t.optionGarantie, icon: <CheckCircle2 size={18} /> },
+                    { id: 'no-garantie', label: t.optionNoGarantie, icon: <ArrowRight size={18} /> }
+                  ].map((option) => (
+                    <button
+                      key={option.id}
+                      type="button"
+                      onClick={() => {
+                        setFormData({ ...formData, serviceOption: option.label });
+                        // Smoothly switch to date tab after selection
+                        setTimeout(() => setActiveTab('date'), 300);
+                      }}
+                      className={"relative p-6 rounded-[1.5rem] border-2 text-left font-black transition-all duration-300 overflow-hidden group " + (
+                        formData.serviceOption === option.label
+                          ? 'bg-brand-red border-brand-red text-white shadow-[0_12px_24px_rgba(201,48,44,0.3),inset_0_2px_0_rgba(255,255,255,0.2)] scale-[1.01] -translate-y-1'
+                          : 'bg-white border-slate-200 text-slate-600 hover:border-slate-300 shadow-[0_4px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.08)]'
+                      )}
+                    >
+                      <div className="relative z-10 flex items-center gap-5">
+                         {formData.serviceOption === option.label ? (
+                            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center shadow-inner shrink-0 scale-110 transition-transform">
+                               <CheckCircle2 size={20} className="text-white drop-shadow-sm" />
+                            </div>
+                         ) : (
+                            <div className="w-10 h-10 bg-slate-50 border border-slate-200/60 rounded-full flex items-center justify-center group-hover:bg-slate-100 group-hover:border-slate-300 transition-all shadow-[inset_0_1px_2px_rgba(0,0,0,0.04)] shrink-0 group-hover:scale-110">
+                               {React.cloneElement(option.icon as React.ReactElement, { className: 'text-slate-300' })}
+                            </div>
+                         )}
+                         <span className="text-base sm:text-lg tracking-tight leading-snug">{option.label}</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-400">
+                <div className="relative group">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <div className="w-12 h-12 bg-gradient-to-br from-brand-red to-red-700 rounded-2xl flex items-center justify-center shadow-[0_4px_10px_rgba(201,48,44,0.25),inset_0_1px_1px_rgba(255,255,255,0.4)] transition-transform group-focus-within:scale-110">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-sm">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                      </svg>
+                    </div>
+                  </div>
+                  <input
+                    type="date"
+                    value={formData.date}
+                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                    className="w-full bg-slate-50 border-2 border-slate-200 focus:border-brand-red rounded-[1.75rem] py-6 pl-20 pr-6 text-gray-900 focus:outline-none focus:bg-white focus:ring-8 focus:ring-brand-red/5 transition-all font-black text-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] appearance-none"
+                  />
+                </div>
+                <p className="text-center text-[11px] font-black text-slate-400 uppercase tracking-widest bg-slate-50 py-3 rounded-xl border border-slate-100">
+                  📅 Flexible Terminwahl möglich
+                </p>
+              </div>
+            )}
 
             <div className="flex flex-col sm:flex-row gap-4 pt-6 mt-4 border-t border-slate-100">
               <button
                 type="button"
                 onClick={() => setStep(2)}
-                className="w-full sm:w-auto px-8 py-5 rounded-[1.25rem] font-bold text-slate-500 bg-white border-2 border-slate-200 hover:border-slate-300 hover:text-slate-800 transition-all shadow-sm hover:shadow-md"
+                className="w-full sm:w-auto px-8 py-5 rounded-[1.25rem] font-bold text-slate-500 bg-white border-2 border-slate-200 hover:border-slate-300 hover:text-slate-800 transition-all shadow-sm hover:shadow-md active:scale-95"
               >
                 {t.back}
               </button>
