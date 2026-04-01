@@ -73,13 +73,18 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
       <div className="space-y-10">
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-gray-100 pb-8">
-          <h3 className="text-2xl sm:text-[32px] font-black tracking-tighter text-gray-900 leading-tight">
-            {t.title}
-          </h3>
+          <div className="space-y-1">
+             <h3 className="text-2xl sm:text-[32px] font-black tracking-tighter text-gray-900 leading-tight">
+               {t.title}
+             </h3>
+             <div className="text-[11px] font-black text-brand-red uppercase tracking-[0.2em]">
+                {t.stepIndicator.replace('{current}', step.toString()).replace('{total}', '4')}
+             </div>
+          </div>
           <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/60 px-4 py-2 rounded-full shrink-0 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
             <div className={"w-2 h-2 rounded-full " + (step < 4 ? 'bg-brand-red animate-pulse' : 'bg-green-500')}></div>
             <span className="text-[11px] font-black text-slate-500 uppercase tracking-widest">
-              {step === 1 ? t.step1 : step === 2 ? t.addonsLabel : step === 3 ? t.details : t.step2}
+              {t.stepLabels[step - 1]}
             </span>
           </div>
         </div>
