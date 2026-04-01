@@ -79,7 +79,7 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
           <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/60 px-4 py-2 rounded-full shrink-0 shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
              <div className={"w-2 h-2 rounded-full " + (step < 4 ? 'bg-brand-red animate-pulse' : 'bg-green-500')}></div>
              <span className="text-[11px] font-black text-slate-500 uppercase tracking-widest">
-                {step === 1 ? t.step1 : step === 2 ? 'Zusatzleistungen' : step === 3 ? 'Details' : t.step2}
+                {step === 1 ? t.step1 : step === 2 ? t.addonsLabel : step === 3 ? t.details : t.step2}
              </span>
           </div>
         </div>
@@ -93,7 +93,7 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
                  {t.rooms}
               </label>
               <div className="grid grid-cols-3 gap-3">
-                {['1.5-2.5', '3.5-4.5', '5.5+'].map((room) => (
+                {t.roomsOptions.map((room: string) => (
                   <button
                     key={room}
                     type="button"
@@ -170,17 +170,10 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
           <div className="space-y-8 animate-in fade-in slide-in-from-right-8 duration-500">
             <div>
               <label className="flex items-center gap-2 text-[11px] font-black text-slate-400 uppercase tracking-widest mb-4">
-                 ZUSATZLEISTUNGEN
+                 {t.addonsTitle}
               </label>
               <div className="grid grid-cols-2 gap-3">
-                {[
-                  'Balkon / Terrasse',
-                  'Keller / Estrich / Garage',
-                  'Teppich-Shamponnieren (80.-)',
-                  'Wintergarten (4.-/m2)',
-                  'Hochdruckreinigung (80.-)',
-                  'Raucherwohnung (250.-)'
-                ].map((addon) => (
+                {t.addonList.map((addon: string) => (
                   <button
                     key={addon}
                     type="button"
@@ -322,7 +315,7 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
                   />
                 </div>
                 <p className="text-center text-[11px] font-black text-slate-400 uppercase tracking-widest bg-slate-50 py-3 rounded-xl border border-slate-100">
-                  📅 Flexible Terminwahl möglich
+                  {t.flexibleDateNote}
                 </p>
               </div>
             )}

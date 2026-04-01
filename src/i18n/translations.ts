@@ -186,6 +186,9 @@ export const translations = {
       optionGarantie: 'Umzugsreinigung mit Abnahmegarantie',
       optionNoGarantie: 'Umzugsreinigung ohne Abnahmegarantie',
       addonsTitle: 'ZUSATZLEISTUNGEN',
+      addonsLabel: 'Zusatzleistungen',
+      details: 'Details',
+      flexibleDateNote: '📅 Flexible Terminwahl möglich',
       addonList: [
         'Balkon / Terrasse',
         'Keller / Estrich / Garage',
@@ -381,6 +384,9 @@ export const translations = {
       optionGarantie: 'Move-out cleaning with handover guarantee',
       optionNoGarantie: 'Move-out cleaning without handover guarantee',
       addonsTitle: 'ADDITIONAL SERVICES',
+      addonsLabel: 'Add-ons',
+      details: 'Details',
+      flexibleDateNote: '📅 Flexible dates available',
       addonList: [
         'Balcony / Terrace',
         'Cellar / Attic / Garage',
