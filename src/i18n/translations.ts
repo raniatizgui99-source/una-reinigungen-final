@@ -184,7 +184,16 @@ export const translations = {
       tabType: 'Reinigungstyp',
       tabDate: 'Wunschdatum',
       optionGarantie: 'Umzugsreinigung mit Abnahmegarantie',
-      optionNoGarantie: 'Umzugsreinigung ohne Abnahmegarantie'
+      optionNoGarantie: 'Umzugsreinigung ohne Abnahmegarantie',
+      addonsTitle: 'ZUSATZLEISTUNGEN',
+      addonList: [
+        'Balkon / Terrasse',
+        'Keller / Estrich / Garage',
+        'Teppich-Shamponnieren (80.-)',
+        'Wintergarten (4.-/m2)',
+        'Hochdruckreinigung (80.-)',
+        'Raucherwohnung (250.-)'
+      ]
     }
   },
   en: {
@@ -370,7 +379,16 @@ export const translations = {
       tabType: 'Cleaning Type',
       tabDate: 'Desired Date',
       optionGarantie: 'Move-out cleaning with handover guarantee',
-      optionNoGarantie: 'Move-out cleaning without handover guarantee'
+      optionNoGarantie: 'Move-out cleaning without handover guarantee',
+      addonsTitle: 'ADDITIONAL SERVICES',
+      addonList: [
+        'Balcony / Terrace',
+        'Cellar / Attic / Garage',
+        'Carpet Shampooing (80.-)',
+        'Winter Garden (4.-/m2)',
+        'High-pressure Cleaning (80.-)',
+        'Smoking Apartment (250.-)'
+      ]
     }
   }
 };
