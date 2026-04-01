@@ -62,11 +62,11 @@ export const Hero: React.FC<HeroProps> = ({ t, formT }) => {
              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
                 <div className="flex items-center gap-3 text-sm font-bold tracking-tight text-white/80 drop-shadow-md">
                    <ShieldCheck size={20} className="text-brand-red" />
-                   100% Abnahmegarantie
+                   {t.guarantee}
                 </div>
                 <div className="flex items-center gap-3 text-sm font-bold tracking-tight text-white/80 drop-shadow-md">
                    <ShieldCheck size={20} className="text-brand-red" />
-                   Fixpreis ohne versteckte Kosten
+                   {t.fixedPrice}
                 </div>
              </div>
              

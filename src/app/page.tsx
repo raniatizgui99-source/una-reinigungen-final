@@ -11,18 +11,13 @@ import { Testimonials } from '@/components/sections/Testimonials';
 import { Footer } from '@/components/layout/Footer';
 import { StickyCTA } from '@/components/layout/StickyCTA';
 import { LegalPage, ImprintContent, PrivacyContent } from '@/components/pages/LegalPage';
-import { Language, translations } from '@/i18n/translations';
+import { LanguageProvider, useTranslation } from '@/context/LanguageContext';
 
 type View = 'main' | 'imprint' | 'privacy';
 
-const App: React.FC = () => {
-  const [lang, setLang] = useState<Language>('de');
+const MainApp: React.FC = () => {
+  const { lang, t, toggleLanguage } = useTranslation();
   const [view, setView] = useState<View>('main');
-  const t = translations[lang];
-
-  const toggleLanguage = () => {
-    setLang(prev => (prev === 'de' ? 'en' : 'de'));
-  };
 
   const navigateTo = (newView: View) => {
     setView(newView);
@@ -76,7 +71,7 @@ const App: React.FC = () => {
           </section>
 
           <section id="reviews">
-            <Testimonials currentLang={lang} />
+            <Testimonials />
           </section>
 
           <section id="process" className="py-24 md:py-40 px-6 bg-black text-white overflow-hidden relative">
@@ -109,7 +104,7 @@ const App: React.FC = () => {
           </section>
 
           <section id="guarantee">
-            <Guarantee currentLang={lang} />
+            <Guarantee />
           </section>
 
           <section id="about" className="bg-white">
@@ -122,9 +117,17 @@ const App: React.FC = () => {
         </main>
 
         <Footer t={t.footer} currentLang={lang} toggleLanguage={toggleLanguage} onNavigate={navigateTo} />
-        <StickyCTA currentLang={lang} />
+        <StickyCTA />
       </div>
     </div>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <LanguageProvider>
+      <MainApp />
+    </LanguageProvider>
   );
 };
 

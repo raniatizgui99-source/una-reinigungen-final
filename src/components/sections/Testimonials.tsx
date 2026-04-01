@@ -1,101 +1,10 @@
 'use client';
 import React, { useState } from 'react';
 import { Star, ThumbsUp, MoreVertical } from 'lucide-react';
+import { useTranslation } from '@/context/LanguageContext';
 
 interface TestimonialsProps {
-  currentLang: 'de' | 'en';
 }
-
-const reviews = {
-  de: {
-    label: 'Kundenrezensionen',
-    title: 'Das sagen unsere Kunden auf Google',
-    subtitle: 'Ausgezeichnet mit 5.0 Sternen',
-    readMore: 'Mehr ansehen',
-    items: [
-      {
-        name: 'Branimir Soldat',
-        initial: 'B',
-        color: 'bg-purple-600',
-        timeAgo: 'vor 2 Jahren',
-        text: 'Alles bestens. Das Team war pünktlich vor Ort und kam auch zur Wohnungsabgabe mit einem Mitarbeiter. Beanstandet wurde aber nichts seitens Verwaltung. Vielen Dank und gerne wieder.',
-        isLocalGuide: true,
-        reviewCount: '12 Rezensionen'
-      },
-      {
-        name: 'Michael Hoffmann',
-        initial: 'M',
-        color: 'bg-blue-600',
-        timeAgo: 'vor 4 Monaten',
-        text: 'Tip top, kann ich voll und ganz weiterempfehlen. Hatte schon einige Umzüge hinter mir, aber noch nie so einfach, gut und preiswert wie mit Una-Reinigung.',
-        isLocalGuide: false,
-        reviewCount: '4 Rezensionen'
-      },
-      {
-        name: 'Jakub Tuleja',
-        initial: 'J',
-        color: 'bg-green-600',
-        timeAgo: 'vor 1 Monat',
-        text: 'Bester Preis, TOP-Qualität, mit Garantie für die Abnahme bei der Wohnungsübergabe, hervorragende Reinigung, freundlicher Service. Sehr empfehlenswert.',
-        isLocalGuide: true,
-        reviewCount: '34 Rezensionen · 5 Fotos'
-      },
-      {
-        name: 'L. Lussi',
-        initial: 'L',
-        color: 'bg-orange-600',
-        timeAgo: 'vor 3 Wochen',
-        text: 'Ich bin sehr zufrieden mit der Endreinigung meiner Wohnung. Herr Lukac war pünktlich und der Kontakt sehr angenehm. Kann ihn nur empfehlen.',
-        isLocalGuide: false,
-        reviewCount: '2 Rezensionen'
-      }
-    ]
-  },
-  en: {
-    label: 'Customer Reviews',
-    title: 'What our customers say on Google',
-    subtitle: 'Rated 5.0 Stars',
-    readMore: 'Read more',
-    items: [
-      {
-        name: 'Branimir Soldat',
-        initial: 'B',
-        color: 'bg-purple-600',
-        timeAgo: '2 years ago',
-        text: 'Everything perfect. The team arrived on time and even attended the apartment handover with an employee. The administration had zero complaints. Thank you very much, gladly again.',
-        isLocalGuide: true,
-        reviewCount: '12 reviews'
-      },
-      {
-        name: 'Michael Hoffmann',
-        initial: 'M',
-        color: 'bg-blue-600',
-        timeAgo: '4 months ago',
-        text: 'Tip top, I can fully recommend them. I have had several moves in the past, but it was never as easy, good and affordable as with Una-Reinigung.',
-        isLocalGuide: false,
-        reviewCount: '4 reviews'
-      },
-      {
-        name: 'Jakub Tuleja',
-        initial: 'J',
-        color: 'bg-green-600',
-        timeAgo: 'a month ago',
-        text: 'Best price, TOP quality, with a guarantee for acceptance at the apartment handover, excellent cleaning, friendly service. Highly recommended.',
-        isLocalGuide: true,
-        reviewCount: '34 reviews · 5 photos'
-      },
-      {
-        name: 'L. Lussi',
-        initial: 'L',
-        color: 'bg-orange-600',
-        timeAgo: '3 weeks ago',
-        text: 'I am very satisfied with the final cleaning of my apartment. Mr. Lukac was punctual and the contact was very pleasant. Can only recommend him.',
-        isLocalGuide: false,
-        reviewCount: '2 reviews'
-      }
-    ]
-  }
-};
 
 const GoogleIcon = () => (
   <svg viewBox="0 0 24 24" className="w-6 h-6" xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +15,7 @@ const GoogleIcon = () => (
   </svg>
 );
 
-const ReviewCard = ({ review, readMoreText }: { review: any, readMoreText: string }) => {
+const ReviewCard = ({ review, readMoreText, helpfulText }: { review: any, readMoreText: string, helpfulText: string }) => {
   const [expanded, setExpanded] = useState(false);
   const textThreshold = 140;
   const isLong = review.text.length > textThreshold;
@@ -169,7 +78,7 @@ const ReviewCard = ({ review, readMoreText }: { review: any, readMoreText: strin
       <div className="flex items-center text-gray-400 text-sm mt-auto pt-4 border-t border-gray-100/50">
          <button className="flex items-center gap-2 hover:bg-gray-50 px-3 py-1.5 rounded-full transition-colors border border-gray-200">
             <ThumbsUp size={16} />
-            <span className="font-medium text-gray-600">Hilfreich</span>
+            <span className="font-medium text-gray-600">{helpfulText}</span>
          </button>
       </div>
 
@@ -177,8 +86,9 @@ const ReviewCard = ({ review, readMoreText }: { review: any, readMoreText: strin
   );
 };
 
-export const Testimonials: React.FC<TestimonialsProps> = ({ currentLang }) => {
-  const t = reviews[currentLang];
+export const Testimonials: React.FC<TestimonialsProps> = () => {
+  const { t: fullT } = useTranslation();
+  const t = (fullT as any).testimonials;
 
   return (
     <div id="reviews" className="bg-[#f8f9fa] py-32 md:py-40 px-6 font-sans">
@@ -188,7 +98,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ currentLang }) => {
         <div className="flex flex-col items-center text-center mb-16 md:mb-24">
           <div className="flex items-center gap-3 bg-white px-6 py-3 rounded-full shadow-sm border border-gray-200 mb-8">
              <GoogleIcon />
-             <span className="font-bold text-gray-800 text-sm md:text-base tracking-wide">Google Rezensionen</span>
+             <span className="font-bold text-gray-800 text-sm md:text-base tracking-wide">{t.googleReviews}</span>
           </div>
           
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter text-black mb-6">
@@ -204,7 +114,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ currentLang }) => {
                   ))}
                 </div>
                 <div className="text-sm font-medium text-gray-500 text-left">
-                  Basierend auf echten Kunden
+                  {t.basedOn}
                 </div>
              </div>
           </div>
@@ -212,8 +122,8 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ currentLang }) => {
 
         {/* Reviews Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {t.items.map((review, idx) => (
-            <ReviewCard key={idx} review={review} readMoreText={t.readMore} />
+          {t.items.map((review: any, idx: number) => (
+            <ReviewCard key={idx} review={review} readMoreText={t.readMore} helpfulText={t.helpful} />
           ))}
         </div>
         

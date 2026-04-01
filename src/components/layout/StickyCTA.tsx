@@ -1,12 +1,14 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Phone, FileText } from 'lucide-react';
+import { useTranslation } from '@/context/LanguageContext';
 
 interface StickyCTAProps {
-  currentLang: 'de' | 'en';
 }
 
-export const StickyCTA: React.FC<StickyCTAProps> = ({ currentLang }) => {
+export const StickyCTA: React.FC<StickyCTAProps> = () => {
+  const { t: fullT } = useTranslation();
+  const t = (fullT as any).stickyCTA;
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -27,14 +29,14 @@ export const StickyCTA: React.FC<StickyCTAProps> = ({ currentLang }) => {
           className="flex-1 flex items-center justify-center gap-2 bg-white border-2 border-brand-red text-brand-red font-bold py-3 rounded-xl active:scale-95 transition-all text-sm"
         >
           <Phone size={18} />
-          {currentLang === 'de' ? 'Anrufen' : 'Call'}
+          {t.call}
         </a>
         <a
           href="#quote-form"
           className="flex-[2] flex items-center justify-center gap-2 bg-brand-red text-white font-bold py-3 rounded-xl shadow-lg shadow-brand-red/20 active:scale-95 transition-all text-sm"
         >
           <FileText size={18} />
-          {currentLang === 'de' ? 'Fixpreis berechnen' : 'Get Fixed Price'}
+          {t.quote}
         </a>
       </div>
     </div>

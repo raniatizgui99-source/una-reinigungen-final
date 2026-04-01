@@ -198,7 +198,69 @@ export const translations = {
         'Wintergarten (4.-/m2)',
         'Hochdruckreinigung (80.-)',
         'Raucherwohnung (250.-)'
+      ],
+    },
+    testimonials: {
+      label: 'Kundenrezensionen',
+      title: 'Das sagen unsere Kunden auf Google',
+      subtitle: 'Ausgezeichnet mit 5.0 Sternen',
+      readMore: 'Mehr ansehen',
+      googleReviews: 'Google Rezensionen',
+      basedOn: 'Basierend auf echten Kunden',
+      helpful: 'Hilfreich',
+      items: [
+        {
+          name: 'Branimir Soldat',
+          initial: 'B',
+          color: 'bg-purple-600',
+          timeAgo: 'vor 2 Jahren',
+          text: 'Alles bestens. Das Team war pünktlich vor Ort und kam auch zur Wohnungsabgabe mit einem Mitarbeiter. Beanstandet wurde aber nichts seitens Verwaltung. Vielen Dank und gerne wieder.',
+          isLocalGuide: true,
+          reviewCount: '12 Rezensionen'
+        },
+        {
+          name: 'Michael Hoffmann',
+          initial: 'M',
+          color: 'bg-blue-600',
+          timeAgo: 'vor 4 Monaten',
+          text: 'Tip top, kann ich voll und ganz weiterempfehlen. Hatte schon einige Umzüge hinter mir, aber noch nie so einfach, gut und preiswert wie mit Una-Reinigung.',
+          isLocalGuide: false,
+          reviewCount: '4 Rezensionen'
+        },
+        {
+          name: 'Jakub Tuleja',
+          initial: 'J',
+          color: 'bg-green-600',
+          timeAgo: 'vor 1 Monat',
+          text: 'Bester Preis, TOP-Qualität, mit Garantie für die Abnahme bei der Wohnungsübergabe, hervorragende Reinigung, freundlicher Service. Sehr empfehlenswert.',
+          isLocalGuide: true,
+          reviewCount: '34 Rezensionen · 5 Fotos'
+        },
+        {
+          name: 'L. Lussi',
+          initial: 'L',
+          color: 'bg-orange-600',
+          timeAgo: 'vor 3 Wochen',
+          text: 'Ich bin sehr zufrieden mit der Endreinigung meiner Wohnung. Herr Lukac war pünktlich und der Kontakt sehr angenehm. Kann ihn nur empfehlen.',
+          isLocalGuide: false,
+          reviewCount: '2 Rezensionen'
+        }
       ]
+    },
+    guaranteeSection: {
+      label: 'Unser Versprechen',
+      title: 'Wird die Wohnung nicht abgenommen? Wir kommen zurück. Kostenlos.',
+      subtitle: 'Unsere 100% Abnahmegarantie bedeutet: Sie zahlen einmal — wir reinigen so oft nach, bis Ihr Vermieter zufrieden ist. Kein Kleingedrucktes. Kein Risiko für Sie.',
+      points: [
+          { icon: 'shield', title: 'Abnahme garantiert', desc: 'Wir sind bei der Wohnungsübergabe persönlich dabei und stehen mit unserem Namen dafür ein.' },
+          { icon: 'refresh', title: 'Kostenlose Nachreinigung', desc: 'Falls die Verwaltung Mängel findet, reinigen wir sofort nach — so oft wie nötig, ohne Aufpreis.' },
+          { icon: 'money', title: 'Ihre Kaution ist sicher', desc: 'In über 1000 Übergaben haben unsere Kunden noch nie ihre Kaution verloren.' },
+      ],
+      cta: 'Jetzt stressfrei buchen'
+    },
+    stickyCTA: {
+      call: 'Anrufen',
+      quote: 'Fixpreis berechnen'
     }
   },
   en: {
@@ -398,7 +460,69 @@ export const translations = {
         'Winter Garden (4.-/m2)',
         'High-pressure Cleaning (80.-)',
         'Smoking Apartment (250.-)'
+      ],
+    },
+    testimonials: {
+      label: 'Customer Reviews',
+      title: 'What our customers say on Google',
+      subtitle: 'Rated 5.0 Stars',
+      readMore: 'Read more',
+      googleReviews: 'Google Reviews',
+      basedOn: 'Based on real customers',
+      helpful: 'Helpful',
+      items: [
+        {
+          name: 'Branimir Soldat',
+          initial: 'B',
+          color: 'bg-purple-600',
+          timeAgo: '2 years ago',
+          text: 'Everything perfect. The team arrived on time and even attended the apartment handover with an employee. The administration had zero complaints. Thank you very much, gladly again.',
+          isLocalGuide: true,
+          reviewCount: '12 reviews'
+        },
+        {
+          name: 'Michael Hoffmann',
+          initial: 'M',
+          color: 'bg-blue-600',
+          timeAgo: '4 months ago',
+          text: 'Tip top, I can fully recommend them. I have had several moves in the past, but it was never as easy, good and affordable as with Una-Reinigung.',
+          isLocalGuide: false,
+          reviewCount: '4 reviews'
+        },
+        {
+          name: 'Jakub Tuleja',
+          initial: 'J',
+          color: 'bg-green-600',
+          timeAgo: 'a month ago',
+          text: 'Best price, TOP quality, with a guarantee for acceptance at the apartment handover, excellent cleaning, friendly service. Highly recommended.',
+          isLocalGuide: true,
+          reviewCount: '34 reviews · 5 photos'
+        },
+        {
+          name: 'L. Lussi',
+          initial: 'L',
+          color: 'bg-orange-600',
+          timeAgo: '3 weeks ago',
+          text: 'I am very satisfied with the final cleaning of my apartment. Mr. Lukac was punctual and the contact was very pleasant. Can only recommend him.',
+          isLocalGuide: false,
+          reviewCount: '2 reviews'
+        }
       ]
+    },
+    guaranteeSection: {
+      label: 'Our Promise',
+      title: 'Apartment not accepted? We come back. Free of charge.',
+      subtitle: 'Our 100% handover guarantee means: you pay once — we re-clean as many times as needed until your landlord is satisfied. No fine print. No risk for you.',
+      points: [
+          { icon: 'shield', title: 'Acceptance guaranteed', desc: 'We are personally present at the apartment handover and stand behind our name.' },
+          { icon: 'refresh', title: 'Free re-cleaning', desc: 'If the management finds issues, we re-clean immediately — as many times as needed, at no extra cost.' },
+          { icon: 'money', title: 'Your deposit is safe', desc: 'In over 1000 handovers, our customers have never lost their deposit.' },
+      ],
+      cta: 'Book stress-free now'
+    },
+    stickyCTA: {
+      call: 'Call',
+      quote: 'Get Fixed Price'
     }
   }
 };

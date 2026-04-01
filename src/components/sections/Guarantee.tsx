@@ -1,34 +1,9 @@
 import React from 'react';
 import { ShieldCheck, CheckCircle2, RefreshCw, Banknote } from 'lucide-react';
+import { useTranslation } from '@/context/LanguageContext';
 
 interface GuaranteeProps {
-  currentLang: 'de' | 'en';
 }
-
-const content = {
-  de: {
-    label: 'Unser Versprechen',
-    title: 'Wird die Wohnung nicht abgenommen? Wir kommen zurück. Kostenlos.',
-    subtitle: 'Unsere 100% Abnahmegarantie bedeutet: Sie zahlen einmal — wir reinigen so oft nach, bis Ihr Vermieter zufrieden ist. Kein Kleingedrucktes. Kein Risiko für Sie.',
-    points: [
-      { icon: 'shield', title: 'Abnahme garantiert', desc: 'Wir sind bei der Wohnungsübergabe persönlich dabei und stehen mit unserem Namen dafür ein.' },
-      { icon: 'refresh', title: 'Kostenlose Nachreinigung', desc: 'Falls die Verwaltung Mängel findet, reinigen wir sofort nach — so oft wie nötig, ohne Aufpreis.' },
-      { icon: 'money', title: 'Ihre Kaution ist sicher', desc: 'In über 1000 Übergaben haben unsere Kunden noch nie ihre Kaution verloren.' },
-    ],
-    cta: 'Jetzt stressfrei buchen'
-  },
-  en: {
-    label: 'Our Promise',
-    title: 'Apartment not accepted? We come back. Free of charge.',
-    subtitle: 'Our 100% handover guarantee means: you pay once — we re-clean as many times as needed until your landlord is satisfied. No fine print. No risk for you.',
-    points: [
-      { icon: 'shield', title: 'Acceptance guaranteed', desc: 'We are personally present at the apartment handover and stand behind our name.' },
-      { icon: 'refresh', title: 'Free re-cleaning', desc: 'If the management finds issues, we re-clean immediately — as many times as needed, at no extra cost.' },
-      { icon: 'money', title: 'Your deposit is safe', desc: 'In over 1000 handovers, our customers have never lost their deposit.' },
-    ],
-    cta: 'Book stress-free now'
-  }
-};
 
 const iconMap: Record<string, React.FC<{ size?: number; className?: string }>> = {
   shield: ShieldCheck,
@@ -36,8 +11,9 @@ const iconMap: Record<string, React.FC<{ size?: number; className?: string }>> =
   money: Banknote,
 };
 
-export const Guarantee: React.FC<GuaranteeProps> = ({ currentLang }) => {
-  const t = content[currentLang];
+export const Guarantee: React.FC<GuaranteeProps> = () => {
+  const { t: fullT } = useTranslation();
+  const t = (fullT as any).guaranteeSection;
 
   return (
     <div className="bg-brand-cream py-24 md:py-32 px-6 relative overflow-hidden">
@@ -59,7 +35,7 @@ export const Guarantee: React.FC<GuaranteeProps> = ({ currentLang }) => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
-          {t.points.map((point, idx) => {
+          {t.points.map((point: any, idx: number) => {
             const Icon = iconMap[point.icon];
             return (
               <div key={idx} className="bg-white rounded-3xl p-8 border border-brand-red/10 shadow-sm hover:shadow-xl hover:shadow-brand-cream transition-all duration-500 group text-left">
