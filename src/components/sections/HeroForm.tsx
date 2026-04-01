@@ -258,10 +258,10 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
             {activeTab === 'type' ? (
               <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2 duration-400">
                 <div className="grid grid-cols-1 gap-4">
-                  {[
-                    { id: 'garantie', label: t.optionGarantie, icon: <CheckCircle2 size={18} /> },
-                    { id: 'no-garantie', label: t.optionNoGarantie, icon: <ArrowRight size={18} /> }
-                  ].map((option) => (
+                  {([
+                    { id: 'garantie', label: t.optionGarantie, Icon: CheckCircle2 },
+                    { id: 'no-garantie', label: t.optionNoGarantie, Icon: ArrowRight }
+                  ] as { id: string; label: string; Icon: React.ElementType }[]).map((option) => (
                     <button
                       key={option.id}
                       type="button"
@@ -283,7 +283,7 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
                           </div>
                         ) : (
                           <div className="w-10 h-10 bg-slate-50 border border-slate-200/60 rounded-full flex items-center justify-center group-hover:bg-slate-100 group-hover:border-slate-300 transition-all shadow-[inset_0_1px_2px_rgba(0,0,0,0.04)] shrink-0 group-hover:scale-110">
-                            {React.cloneElement(option.icon as React.ReactElement, { className: 'text-slate-300' })}
+                            <option.Icon size={18} className="text-slate-300" />
                           </div>
                         )}
                         <span className="text-base sm:text-lg tracking-tight leading-snug">{option.label}</span>

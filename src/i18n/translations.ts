@@ -16,7 +16,9 @@ export const translations = {
       secondary: 'Über 1000 erfolgreiche Wohnungsübergaben',
       locationInfo: 'Regensdorf & 20km Umkreis',
       topRated: '5.0 auf Google',
-      urgency: 'Nächste freie Termine füllen sich schnell'
+      urgency: 'Nächste freie Termine füllen sich schnell',
+      guarantee: '100% Abnahmegarantie',
+      fixedPrice: 'Fixpreis ohne versteckte Kosten'
     },
     whyUs: {
       title: 'Warum UNA Reinigungen?',
@@ -214,7 +216,9 @@ export const translations = {
       secondary: 'Over 1000 successful apartment handovers',
       locationInfo: 'Regensdorf & 20km radius',
       topRated: '5.0 on Google',
-      urgency: 'Next available slots filling up fast'
+      urgency: 'Next available slots filling up fast',
+      guarantee: '100% Handover Guarantee',
+      fixedPrice: 'Fixed price without hidden costs'
     },
     whyUs: {
       title: 'Why UNA Cleaning?',
