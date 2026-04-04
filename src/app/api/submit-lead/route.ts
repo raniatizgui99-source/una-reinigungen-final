@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
 import { prisma } from '@/lib/prisma';
+
 
 export async function POST(req: Request) {
   try {
@@ -10,6 +10,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Missing form data" }, { status: 400 });
     }
 
+    // Save to Database
     await prisma.lead.create({
       data: {
         name: formData.name,
@@ -24,69 +25,155 @@ export async function POST(req: Request) {
       }
     });
 
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+    const CLOUDFLARE_API_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
+    // NOTE: Replace this with your actual Cloudflare Worker URL or the specific Cloudflare Email API endpoint you are using.
+    const CLOUDFLARE_API_URL = process.env.CLOUDFLARE_EMAIL_URL || 'https://api.cloudflare.com/client/v4/accounts/YOUR_ACCOUNT_ID/email/routing/send';
 
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.RECEIVER_EMAIL || 'info@una-reinigungen.ch',
-      subject: `Neue Buchungsanfrage: ${formData.name}`,
-      text: `
-        Neue Buchungsanfrage von der Website:
-        Name: ${formData.name}
-        Email: ${formData.email}
-        Telefon: ${formData.phone}
-        PLZ: ${formData.zip}
-        Datum: ${formData.date}
-        Zimmer: ${formData.rooms}
-        Kategorie: ${formData.category}
-        Zusatzleistungen: ${formData.addons.join(", ")}
-        Nachricht: ${formData.message}
-      `,
-      html: `
-        <h2>Neue Buchungsanfrage</h2>
-        <p><strong>Name:</strong> ${formData.name}</p>
-        <p><strong>Email:</strong> ${formData.email}</p>
-        <p><strong>Telefon:</strong> ${formData.phone}</p>
-        <p><strong>PLZ:</strong> ${formData.zip}</p>
-        <p><strong>Datum:</strong> ${formData.date}</p>
-        <p><strong>Zimmer:</strong> ${formData.rooms}</p>
-        <p><strong>Kategorie:</strong> ${formData.category}</p>
-        <p><strong>Zusatzleistungen:</strong> ${formData.addons.join(", ")}</p>
-        <p><strong>Nachricht:</strong> ${formData.message}</p>
-      `,
-    };
+    const renderAdminEmailHtml = () => `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="utf-8">
+        <title>New Lead - UNA Reinigungen</title>
+      </head>
+      <body style="font-family: 'Inter', Helvetica, Arial, sans-serif; background-color: #f9f6f0; margin: 0; padding: 40px 0; color: #111;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-w-7xl mx-auto max-width: 600px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); overflow: hidden;">
+          <tr>
+            <td style="background-color: #111; padding: 30px; text-align: center;">
+              <h1 style="color: #ffffff; margin: 0; font-size: 24px; letter-spacing: 2px; text-transform: uppercase;">UNA <span style="color: #c9302c;">Reinigungen</span></h1>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 40px 30px;">
+              <h2 style="font-size: 20px; font-weight: 600; margin-top: 0; margin-bottom: 24px; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px;">New Booking Request</h2>
+              
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-size: 15px; line-height: 1.6;">
+                <tr><td width="35%" style="padding: 8px 0; color: #666;"><strong>Name:</strong></td><td style="padding: 8px 0; font-weight: 500;">${formData.name}</td></tr>
+                <tr><td style="padding: 8px 0; color: #666;"><strong>Email:</strong></td><td style="padding: 8px 0; font-weight: 500;"><a href="mailto:${formData.email}" style="color: #c9302c; text-decoration: none;">${formData.email}</a></td></tr>
+                <tr><td style="padding: 8px 0; color: #666;"><strong>Phone:</strong></td><td style="padding: 8px 0; font-weight: 500;">${formData.phone}</td></tr>
+                <tr><td style="padding: 8px 0; color: #666;"><strong>ZIP Code:</strong></td><td style="padding: 8px 0; font-weight: 500;">${formData.zip}</td></tr>
+                <tr><td style="padding: 8px 0; border-bottom: 1px solid #f0f0f0; border-top: 1px solid #f0f0f0;"><br></td><td style="padding: 8px 0; border-bottom: 1px solid #f0f0f0; border-top: 1px solid #f0f0f0;"><br></td></tr>
+                <tr><td style="padding: 8px 0; color: #666; padding-top: 16px;"><strong>Date:</strong></td><td style="padding: 8px 0; font-weight: 500; padding-top: 16px;">${formData.date}</td></tr>
+                <tr><td style="padding: 8px 0; color: #666;"><strong>Category:</strong></td><td style="padding: 8px 0; font-weight: 500;">${formData.category}</td></tr>
+                <tr><td style="padding: 8px 0; color: #666;"><strong>Rooms:</strong></td><td style="padding: 8px 0; font-weight: 500;">${formData.rooms}</td></tr>
+                <tr><td style="padding: 8px 0; color: #666;"><strong>Extras:</strong></td><td style="padding: 8px 0; font-weight: 500;">${formData.addons.length > 0 ? formData.addons.join(", ") : "None"}</td></tr>
+              </table>
 
-    const userMailOptions = {
-      from: process.env.EMAIL_USER,
-      to: formData.email,
-      subject: 'Bestätigung Ihrer Buchungsanfrage - UNA Reinigungen',
-      text: `Guten Tag ${formData.name}, Vielen Dank für Ihre Buchungsanfrage. Unser Team wird Ihre Angaben prüfen...`,
-      html: `
-        <div style="font-family: sans-serif; line-height: 1.6; color: #333;">
-          <h2 style="color: #c9302c;">Vielen Dank für Ihre Buchungsanfrage</h2>
-          <p>Guten Tag ${formData.name},</p>
-          <p>Vielen Dank für Ihre Buchungsanfrage bei UNA Reinigungen. Wir haben Ihre Anfrage erhalten und bestätigen hiermit den Eingang.</p>
-          <p>Unser Team wird Ihre Angaben prüfen und sich <strong>in Kürze persönlich bei Ihnen melden</strong>, um die Details zu besprechen und Ihnen eine verbindliche Offerte zuzusenden.</p>
-        </div>
-      `,
-    };
+              ${formData.message ? `
+              <div style="margin-top: 30px; background-color: #f9f6f0; padding: 20px; border-radius: 6px; border-left: 4px solid #c9302c;">
+                <p style="margin: 0; font-size: 14px; color: #666; margin-bottom: 8px;"><strong>Message / Notes:</strong></p>
+                <p style="margin: 0; font-size: 15px; font-style: italic;">"${formData.message}"</p>
+              </div>
+              ` : ''}
+              
+              <div style="margin-top: 40px; text-align: center;">
+                <a href="mailto:${formData.email}" style="display: inline-block; background-color: #c9302c; color: white; text-decoration: none; padding: 12px 24px; font-weight: 600; border-radius: 4px; letter-spacing: 0.5px;">REPLY TO CUSTOMER</a>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </body>
+      </html>
+    `;
 
-    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-      await transporter.sendMail(mailOptions);
-      await transporter.sendMail(userMailOptions);
-      return NextResponse.json({ success: true, message: "Emails sent successfully" });
+    const renderCustomerEmailHtml = () => `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Request Received - UNA Reinigungen</title>
+      </head>
+      <body style="font-family: 'Inter', Helvetica, Arial, sans-serif; background-color: #f9f6f0; margin: 0; padding: 40px 0; color: #111;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); overflow: hidden;">
+          <tr>
+            <td style="background-color: #111; padding: 40px 30px; text-align: center;">
+              <h1 style="color: #ffffff; margin: 0; font-size: 26px; letter-spacing: 2px; text-transform: uppercase;">UNA <span style="color: #c9302c;">Reinigungen</span></h1>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 40px 30px;">
+              <h2 style="font-size: 22px; font-weight: 600; margin-top: 0; margin-bottom: 20px; color: #111;">Vielen Dank für Ihre Anfrage!</h2>
+              <p style="font-size: 16px; line-height: 1.6; color: #444; margin-bottom: 20px;">
+                Guten Tag ${formData.name},
+              </p>
+              <p style="font-size: 16px; line-height: 1.6; color: #444; margin-bottom: 24px;">
+                Wir haben Ihre Buchungsanfrage erfolgreich erhalten. Unser Team wird Ihre Angaben sorgfältig prüfen und sich <strong>in Kürze persönlich bei Ihnen melden</strong>, um die Details zu besprechen und Ihnen eine verbindliche Offerte zuzusenden.
+              </p>
+              
+              <div style="background-color: #f9f6f0; border-left: 3px solid #c9302c; padding: 20px; border-radius: 4px; margin-bottom: 30px;">
+                <h3 style="margin-top: 0; font-size: 15px; color: #333; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Ihre Anfrage in der Übersicht</h3>
+                <p style="margin: 0 0 8px 0; font-size: 14px; color: #555;"><strong>Datum:</strong> ${formData.date}</p>
+                <p style="margin: 0 0 8px 0; font-size: 14px; color: #555;"><strong>Kategorie:</strong> ${formData.category}</p>
+                <p style="margin: 0; font-size: 14px; color: #555;"><strong>Zimmer:</strong> ${formData.rooms}</p>
+              </div>
+              
+              <p style="font-size: 15px; line-height: 1.6; color: #666; margin-bottom: 30px;">
+                Für dringende Anliegen erreichen Sie uns auch direkt via <a href="mailto:info@una-reinigungen.ch" style="color: #c9302c; text-decoration: underline;">info@una-reinigungen.ch</a>.
+              </p>
+              
+              <div style="border-top: 1px solid #eee; padding-top: 24px;">
+                <p style="font-size: 14px; color: #888; margin: 0; text-align: center;">
+                  Freundliche Grüsse<br><br>
+                  <strong style="color: #333;">Ihr Team von UNA Reinigungen</strong>
+                </p>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </body>
+      </html>
+    `;
+
+    if (CLOUDFLARE_API_TOKEN) {
+      // 1. Send Admin Email
+      const adminEmailData = {
+        personalizations: [{ to: [{ email: 'info@una-reinigungen.ch' }] }],
+        from: { email: 'info@una-reinigungen.ch', name: 'UNA Web' },
+        subject: `Neue Buchungsanfrage: ${formData.name}`,
+        content: [{ type: 'text/html', value: renderAdminEmailHtml() }]
+      };
+
+      const adminResponse = await fetch(CLOUDFLARE_API_URL, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${CLOUDFLARE_API_TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(adminEmailData)
+      });
+
+      // 2. Send Customer Confirmation Email
+      const customerEmailData = {
+        personalizations: [{ to: [{ email: formData.email }] }],
+        from: { email: 'info@una-reinigungen.ch', name: 'UNA Reinigungen' },
+        subject: 'Ihre Anfrage bei UNA Reinigungen',
+        content: [{ type: 'text/html', value: renderCustomerEmailHtml() }]
+      };
+
+      const customerResponse = await fetch(CLOUDFLARE_API_URL, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${CLOUDFLARE_API_TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(customerEmailData)
+      });
+
+      if (!adminResponse.ok || !customerResponse.ok) {
+        console.error("Failed Cloudflare APIs", await adminResponse.text(), await customerResponse.text());
+        // Do not throw error yet to avoid failing the DB write, just log it.
+      } else {
+         console.log("Emails sent successfully via Cloudflare API.");
+      }
+
+      return NextResponse.json({ success: true, message: "Emails scheduled via Cloudflare" });
     } else {
-      console.log("Email credentials missing, skipping email send. Form data:", formData);
-      return NextResponse.json({ success: true, message: "Form submitted (email skipped due to missing credentials)" });
+      console.log("Cloudflare credentials missing. Data saved.", formData);
+      return NextResponse.json({ success: true, message: "Form submitted without email." });
     }
   } catch (error) {
-    console.error("Error sending email:", error);
-    return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
+    console.error("Error submitting lead:", error);
+    return NextResponse.json({ error: "Failed to process form" }, { status: 500 });
   }
 }
+
