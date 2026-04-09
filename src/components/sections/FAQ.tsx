@@ -14,9 +14,9 @@ export const FAQ: React.FC<FAQProps> = ({ t }) => {
       <div className="text-center mb-20 md:mb-24 space-y-6">
         <div className="inline-flex items-center gap-2 bg-brand-red/10 px-4 py-2 rounded-full mb-4">
           <HelpCircle size={14} className="text-brand-red" />
-          <h2 className="text-xs font-black uppercase tracking-[0.2em] text-brand-red mb-0">{t.label}</h2>
+          <span className="text-xs font-black uppercase tracking-[0.2em] text-brand-red mb-0">{t.label}</span>
         </div>
-        <h3 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter text-black leading-[1.05]">{t.title}</h3>
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter text-black leading-[1.05]">{t.title}</h2>
         <p className="text-black/50 max-w-2xl mx-auto font-medium text-lg md:text-xl">
           {t.subtitle}
         </p>
@@ -71,7 +71,7 @@ export const FAQ: React.FC<FAQProps> = ({ t }) => {
          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-brand-red/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 transition-transform duration-1000 group-hover:scale-110 pointer-events-none"></div>
          
          <div className="relative z-10 max-w-2xl mx-auto">
-           <h4 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tighter mb-4">{t.moreQuestionsTitle}</h4>
+           <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tighter mb-4">{t.moreQuestionsTitle}</h3>
            <p className="text-base md:text-lg text-white/60 font-medium mb-10">{t.moreQuestionsDesc}</p>
            
            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">

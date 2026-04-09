@@ -18,9 +18,9 @@ export const Services: React.FC<ServicesProps> = ({ t }) => {
             <span className="text-xs font-black uppercase tracking-[0.2em] text-brand-red">{t.title}</span>
           </div>
           
-          <h3 className="text-4xl sm:text-5xl md:text-[4rem] font-black tracking-tighter text-black mb-8 leading-[1.05]">
+          <h2 className="text-4xl sm:text-5xl md:text-[4rem] font-black tracking-tighter text-black mb-8 leading-[1.05]">
             {t.subtitle}
-          </h3>
+          </h2>
           
           <p className="text-lg md:text-2xl text-black/50 font-medium leading-relaxed max-w-2xl">
             {t.seo_note}
@@ -42,7 +42,7 @@ export const Services: React.FC<ServicesProps> = ({ t }) => {
                   <div className="w-14 h-14 bg-brand-red/20 backdrop-blur-md rounded-[1.2rem] flex items-center justify-center border border-brand-red/30 text-brand-red">
                     <ShieldCheck size={28} />
                   </div>
-                  <h4 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter">{t.mainPackage.title}</h4>
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter">{t.mainPackage.title}</h3>
                 </div>
                 <p className="text-white/60 text-lg md:text-xl font-medium leading-relaxed mb-10 max-w-xl">
                   {t.mainPackage.description}
@@ -90,9 +90,9 @@ export const Services: React.FC<ServicesProps> = ({ t }) => {
                   <span className="text-black/5 text-5xl font-black italic tracking-tighter">0{idx + 1}</span>
                 </div>
                 
-                <h5 className="text-xl md:text-2xl font-black tracking-tight text-black mb-8">
+                <h4 className="text-xl md:text-2xl font-black tracking-tight text-black mb-8">
                   {section.category}
-                </h5>
+                </h4>
                 
                 <ul className="space-y-4 mb-8 flex-grow">
                   {section.items.map((item: string, i: number) => (
@@ -115,7 +115,7 @@ export const Services: React.FC<ServicesProps> = ({ t }) => {
             <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             
             <div className="max-w-2xl relative z-10">
-              <h6 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">{t.addonsTitle}</h6>
+              <h5 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">{t.addonsTitle}</h5>
               <p className="text-white/80 text-lg font-medium leading-relaxed mb-8">
                 {t.addonsNote}
               </p>

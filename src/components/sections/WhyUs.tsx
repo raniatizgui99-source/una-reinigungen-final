@@ -16,11 +16,11 @@ export const WhyUs: React.FC<WhyUsProps> = ({ t }) => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-20 md:mb-28 gap-8">
           <div className="max-w-3xl">
-            <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-brand-red mb-6 inline-flex items-center gap-2 bg-brand-red/10 px-4 py-1.5 rounded-full">
+            <span className="text-sm font-bold uppercase tracking-[0.3em] text-brand-red mb-6 inline-flex items-center gap-2 bg-brand-red/10 px-4 py-1.5 rounded-full">
                <Star size={12} className="text-brand-red fill-brand-red" />
                {t.title}
-            </h2>
-            <p className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter text-black leading-[1.05]">{t.subtitle}</p>
+            </span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter text-black leading-[1.05]">{t.subtitle}</h2>
           </div>
           <div className="text-black/50 max-w-sm text-sm sm:text-base leading-relaxed md:pb-3 font-medium">
             {t.description}

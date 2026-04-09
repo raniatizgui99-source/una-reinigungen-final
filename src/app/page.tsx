@@ -78,8 +78,8 @@ const MainApp: React.FC = () => {
           <section id="process" className="py-24 md:py-40 px-6 bg-black text-white overflow-hidden relative">
              <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-16 md:mb-24 space-y-6">
-                   <h2 className="text-sm font-bold uppercase tracking-[0.4em] text-brand-red">{(t as any).process.label}</h2>
-                   <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">{(t as any).process.title}</h3>
+                   <span className="text-sm font-bold uppercase tracking-[0.4em] text-brand-red">{(t as any).process.label}</span>
+                   <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight">{(t as any).process.title}</h2>
                 </div>
                 <div className="grid md:grid-cols-3 gap-12 md:gap-20 relative">
                    <div className="hidden md:block absolute top-12 left-0 w-full h-[2px] bg-white/10 z-0"></div>
@@ -90,7 +90,7 @@ const MainApp: React.FC = () => {
                             0{idx + 1}
                          </div>
                          <div className="space-y-4">
-                            <h4 className="text-lg sm:text-xl md:text-2xl font-bold">{step.title}</h4>
+                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold">{step.title}</h3>
                             <p className="text-brand-cream/80 text-base md:text-lg font-light leading-relaxed">{step.desc}</p>
                          </div>
                       </div>
