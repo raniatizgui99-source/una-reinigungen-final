@@ -10,6 +10,7 @@ import { Guarantee } from '@/components/sections/Guarantee';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { Footer } from '@/components/layout/Footer';
 import { StickyCTA } from '@/components/layout/StickyCTA';
+import { WhatsAppButton } from '@/components/layout/WhatsAppButton';
 import { LegalPage, ImprintContent, PrivacyContent } from '@/components/pages/LegalPage';
 import { LanguageProvider, useTranslation } from '@/context/LanguageContext';
 
@@ -118,6 +119,7 @@ const MainApp: React.FC = () => {
 
         <Footer t={t.footer} currentLang={lang} toggleLanguage={toggleLanguage} onNavigate={navigateTo} />
         <StickyCTA />
+        <WhatsAppButton />
       </div>
     </div>
   );

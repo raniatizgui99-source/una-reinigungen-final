@@ -127,8 +127,8 @@ export async function POST(req: Request) {
     if (CLOUDFLARE_API_TOKEN) {
       // 1. Send Admin Email
       const adminEmailData = {
-        personalizations: [{ to: [{ email: 'info@una-reinigungen.ch' }] }],
-        from: { email: 'info@una-reinigungen.ch', name: 'UNA Web' },
+        personalizations: [{ to: [{ email: process.env.RECEIVER_EMAIL || 'info@una-reinigungen.ch' }] }],
+        from: { email: process.env.RECEIVER_EMAIL || 'info@una-reinigungen.ch', name: 'UNA Web' },
         subject: `Neue Buchungsanfrage: ${formData.name}`,
         content: [{ type: 'text/html', value: renderAdminEmailHtml() }]
       };
@@ -145,7 +145,7 @@ export async function POST(req: Request) {
       // 2. Send Customer Confirmation Email
       const customerEmailData = {
         personalizations: [{ to: [{ email: formData.email }] }],
-        from: { email: 'info@una-reinigungen.ch', name: 'UNA Reinigungen' },
+        from: { email: process.env.RECEIVER_EMAIL || 'info@una-reinigungen.ch', name: 'UNA Reinigungen' },
         subject: 'Ihre Anfrage bei UNA Reinigungen',
         content: [{ type: 'text/html', value: renderCustomerEmailHtml() }]
       };
