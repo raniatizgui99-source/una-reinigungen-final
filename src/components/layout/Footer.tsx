@@ -40,7 +40,7 @@ export const Footer: React.FC<FooterProps> = ({ t, currentLang, toggleLanguage, 
           </div>
 
           <div className="space-y-6">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{t.contactLabel}</h4>
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{t.contactLabel}</h3>
             <div className="space-y-4 text-base font-medium text-white/80">
               <p className="flex items-start gap-4 hover:text-white transition-colors">
                 <MapPin size={20} className="text-brand-red shrink-0" />
@@ -62,7 +62,7 @@ export const Footer: React.FC<FooterProps> = ({ t, currentLang, toggleLanguage, 
           </div>
 
           <div className="space-y-6">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{t.linksLabel}</h4>
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{t.linksLabel}</h3>
             <nav className="flex flex-col space-y-4 text-base font-medium text-white/80">
               <button onClick={() => onNavigate('imprint')} className="text-left hover:text-white hover:translate-x-1 transition-all flex items-center">{t.imprint}</button>
               <button onClick={() => onNavigate('privacy')} className="text-left hover:text-white hover:translate-x-1 transition-all flex items-center">{t.privacy}</button>
@@ -71,7 +71,7 @@ export const Footer: React.FC<FooterProps> = ({ t, currentLang, toggleLanguage, 
           </div>
 
           <div className="space-y-6">
-            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{t.languageLabel}</h4>
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{t.languageLabel}</h3>
             <div className="flex gap-4">
               <button 
                 onClick={() => currentLang !== 'de' && toggleLanguage()}

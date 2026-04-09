@@ -115,7 +115,7 @@ export const Services: React.FC<ServicesProps> = ({ t }) => {
             <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             
             <div className="max-w-2xl relative z-10">
-              <h5 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">{t.addonsTitle}</h5>
+              <h4 className="text-3xl md:text-4xl font-black tracking-tighter mb-4">{t.addonsTitle}</h4>
               <p className="text-white/80 text-lg font-medium leading-relaxed mb-8">
                 {t.addonsNote}
               </p>
