@@ -25,10 +25,6 @@ export async function POST(req: Request) {
       }
     });
 
-    const CLOUDFLARE_API_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
-    // NOTE: Replace this with your actual Cloudflare Worker URL or the specific Cloudflare Email API endpoint you are using.
-    const CLOUDFLARE_API_URL = process.env.CLOUDFLARE_EMAIL_URL || 'https://api.cloudflare.com/client/v4/accounts/YOUR_ACCOUNT_ID/email/routing/send';
-
     const renderAdminEmailHtml = () => `
       <!DOCTYPE html>
       <html>
@@ -124,54 +120,54 @@ export async function POST(req: Request) {
       </html>
     `;
 
-    if (CLOUDFLARE_API_TOKEN) {
-      // 1. Send Admin Email
-      const adminEmailData = {
-        personalizations: [{ to: [{ email: process.env.RECEIVER_EMAIL || 'info@una-reinigungen.ch' }] }],
-        from: { email: process.env.RECEIVER_EMAIL || 'info@una-reinigungen.ch', name: 'UNA Web' },
-        subject: `Neue Buchungsanfrage: ${formData.name}`,
-        content: [{ type: 'text/html', value: renderAdminEmailHtml() }]
-      };
+    const RESEND_API_KEY = process.env.RESEND_API_KEY;
+    const adminEmail = process.env.RECEIVER_EMAIL || 'info@una-reinigungen.ch';
 
-      const adminResponse = await fetch(CLOUDFLARE_API_URL, {
+    if (RESEND_API_KEY) {
+      // 1. Send Admin Email via Resend
+      const adminResponse = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${CLOUDFLARE_API_TOKEN}`,
+          'Authorization': `Bearer ${RESEND_API_KEY}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(adminEmailData)
+        body: JSON.stringify({
+          from: 'UNA Reinigungen <noreply@una-reinigungen.ch>',
+          to: adminEmail,
+          subject: `Neue Buchungsanfrage: ${formData.name}`,
+          html: renderAdminEmailHtml(),
+        })
       });
       
       console.log(`Admin email status: ${adminResponse.status}`);
 
-      // 2. Send Customer Confirmation Email
-      const customerEmailData = {
-        personalizations: [{ to: [{ email: formData.email }] }],
-        from: { email: process.env.RECEIVER_EMAIL || 'info@una-reinigungen.ch', name: 'UNA Reinigungen' },
-        subject: 'Ihre Anfrage bei UNA Reinigungen',
-        content: [{ type: 'text/html', value: renderCustomerEmailHtml() }]
-      };
-
-      const customerResponse = await fetch(CLOUDFLARE_API_URL, {
+      // 2. Send Customer Confirmation Email via Resend
+      const customerResponse = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${CLOUDFLARE_API_TOKEN}`,
+          'Authorization': `Bearer ${RESEND_API_KEY}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(customerEmailData)
+        body: JSON.stringify({
+          from: 'UNA Reinigungen <noreply@una-reinigungen.ch>',
+          to: formData.email,
+          subject: 'Ihre Anfrage bei UNA Reinigungen',
+          html: renderCustomerEmailHtml(),
+        })
       });
 
       if (!adminResponse.ok || !customerResponse.ok) {
-        console.error("Failed Cloudflare APIs", await adminResponse.text(), await customerResponse.text());
-        // Do not throw error yet to avoid failing the DB write, just log it.
+        const adminErr = await adminResponse.text();
+        const customerErr = await customerResponse.text();
+        console.error("Failed Resend APIs", adminErr, customerErr);
       } else {
-         console.log("Emails sent successfully via Cloudflare API.");
+         console.log("Emails sent successfully via Resend API.");
       }
 
-      return NextResponse.json({ success: true, message: "Emails scheduled via Cloudflare" });
+      return NextResponse.json({ success: true, message: "Emails scheduled via Resend" });
     } else {
-      console.log("Cloudflare credentials missing. Data saved.", formData);
-      return NextResponse.json({ success: true, message: "Form submitted without email." });
+      console.log("Resend API key missing. Data saved locally.", formData);
+      return NextResponse.json({ success: true, message: "Form submitted without email relay." });
     }
   } catch (error) {
     console.error("Error submitting lead:", error);
