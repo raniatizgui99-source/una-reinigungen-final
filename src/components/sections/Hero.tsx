@@ -55,7 +55,7 @@ export const Hero: React.FC<HeroProps> = ({ t, formT }) => {
             {t.sub}
           </p>
 
-          <div className="w-full max-w-4xl relative">
+          <div id="quote-form" className="w-full max-w-4xl relative">
              <HeroForm t={formT} />
              
              {/* Friction Reducers directly attached to the form base, upgraded for Dark Stage legibility */}
@@ -73,7 +73,7 @@ export const Hero: React.FC<HeroProps> = ({ t, formT }) => {
              {/* WhatsApp Hero Button */}
              <div className="mt-10 flex flex-col items-center gap-4">
                 <a 
-                  href="https://wa.me/41788171368"
+                  href="https://wa.me/41762300063"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_10px_30px_rgba(37,211,102,0.3)] group"

@@ -90,9 +90,9 @@ export const Header: React.FC<HeaderProps> = ({ t, currentLang, toggleLanguage, 
           </button>
           
           <a 
-            href="#hero" 
+            href="#quote-form" 
             className="hidden sm:flex bg-black text-white text-xs md:text-sm font-bold px-6 py-3 rounded-xl hover:bg-brand-red hover:shadow-lg hover:shadow-brand-red/20 transition-all transform hover:-translate-y-0.5 active:scale-95"
-            onClick={(e) => handleNavClick(e, '#hero')}
+            onClick={(e) => handleNavClick(e, '#quote-form')}
           >
             {t.cta}
           </a>
@@ -125,10 +125,10 @@ export const Header: React.FC<HeaderProps> = ({ t, currentLang, toggleLanguage, 
             <div className="w-12 h-1 bg-brand-red/20 mx-auto rounded-full my-4"></div>
             
             <a 
-              href="#hero" 
+              href="#quote-form" 
               className="mx-auto w-full max-w-sm bg-brand-red text-white text-lg font-bold py-5 rounded-2xl shadow-2xl shadow-brand-red/20 animate-in slide-in-from-bottom-8 opacity-0 [animation-fill-mode:forwards]"
               style={{ animationDelay: (navLinks.length * 50) + "ms" }}
-              onClick={(e) => handleNavClick(e, '#hero')}
+              onClick={(e) => handleNavClick(e, '#quote-form')}
             >
               {t.cta}
             </a>

@@ -66,7 +66,7 @@ export const Footer: React.FC<FooterProps> = ({ t, currentLang, toggleLanguage, 
             <nav className="flex flex-col space-y-4 text-base font-medium text-white/80">
               <button onClick={() => onNavigate('imprint')} className="text-left hover:text-white hover:translate-x-1 transition-all flex items-center">{t.imprint}</button>
               <button onClick={() => onNavigate('privacy')} className="text-left hover:text-white hover:translate-x-1 transition-all flex items-center">{t.privacy}</button>
-              <a href="#hero" onClick={() => onNavigate('main')} className="hover:text-white hover:translate-x-1 transition-all flex items-center">{t.contactLabel}</a>
+              <a href="#quote-form" onClick={() => onNavigate('main')} className="hover:text-white hover:translate-x-1 transition-all flex items-center">{t.contactLabel}</a>
             </nav>
           </div>
 
