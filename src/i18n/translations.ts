@@ -19,7 +19,7 @@ export const translations = {
       urgency: 'Nächste freie Termine füllen sich schnell',
       guarantee: '100% Abnahmegarantie',
       fixedPrice: 'Fixpreis ohne versteckte Kosten',
-      whatsappChat: 'Chat mit uns'
+      whatsappChat: 'Sofort Angebot per WhatsApp'
     },
     whyUs: {
       title: 'Warum UNA Reinigungen?',
@@ -284,7 +284,7 @@ export const translations = {
       urgency: 'Next available slots filling up fast',
       guarantee: '100% Handover Guarantee',
       fixedPrice: 'Fixed price without hidden costs',
-      whatsappChat: 'Chat with us'
+      whatsappChat: 'Instant Quote via WhatsApp'
     },
     whyUs: {
       title: 'Why UNA Cleaning?',

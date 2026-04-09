@@ -141,6 +141,8 @@ export async function POST(req: Request) {
         },
         body: JSON.stringify(adminEmailData)
       });
+      
+      console.log(`Admin email status: ${adminResponse.status}`);
 
       // 2. Send Customer Confirmation Email
       const customerEmailData = {

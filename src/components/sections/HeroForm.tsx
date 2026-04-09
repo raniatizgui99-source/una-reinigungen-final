@@ -45,6 +45,11 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
       });
 
       if (response.ok) {
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'conversion', {
+            'send_to': 'AW-11462828452/Tra_enje_ponude_1'
+          });
+        }
         setIsSubmitted(true);
       }
     } catch (error) {
