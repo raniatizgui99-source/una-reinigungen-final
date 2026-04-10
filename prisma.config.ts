@@ -1,9 +1,5 @@
-import { defineConfig } from '@prisma/config';
+import { defineConfig } from 'prisma/config'
 
 export default defineConfig({
-  schema: 'prisma/schema.prisma',
-  earlyAccess: true,
-  datasource: {
-    url: process.env.DIRECT_URL || process.env.DATABASE_URL
-  }
-});
+  datasourceUrl: process.env.DATABASE_URL,
+})
