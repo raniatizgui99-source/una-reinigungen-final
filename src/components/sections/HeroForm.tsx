@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle2, MapPin, User, Mail, Phone } from 'lucide-react';
+import { ArrowRight, CheckCircle2, MapPin, User, Mail, Phone, MessageSquare } from 'lucide-react';
 
 interface HeroFormProps {
   t: any;
@@ -19,6 +19,7 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
     name: '',
     email: '',
     phone: '',
+    message: '',
   });
   const [activeTab, setActiveTab] = useState<'type' | 'date'>('type');
 
@@ -39,7 +40,7 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
           formData: {
             ...formData,
             category: 'Premium Hero Quote',
-            message: 'Submitted via V3 Premium Hero Form.'
+            message: formData.message || 'Submitted via V3 Premium Hero Form.'
           }
         }),
       });
@@ -403,6 +404,22 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="w-full bg-slate-50/50 border border-slate-200 focus:border-brand-red rounded-[1.25rem] py-4 pl-16 pr-5 text-gray-900 focus:outline-none focus:bg-white focus:ring-4 focus:ring-brand-red/10 transition-all font-bold text-lg placeholder:text-slate-400/70 placeholder:font-semibold shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]"
+                />
+              </div>
+
+              {/* Message Input */}
+              <div className="relative group">
+                <div className="absolute inset-y-0 left-0 pl-3 pt-4 flex items-start pointer-events-none">
+                  <div className="w-10 h-10 bg-gradient-to-br from-slate-400 to-slate-500 rounded-xl flex items-center justify-center shadow-[0_2px_4px_rgba(0,0,0,0.1),inset_0_1px_1px_rgba(255,255,255,0.3)]">
+                    <MessageSquare size={20} className="text-white drop-shadow-sm" />
+                  </div>
+                </div>
+                <textarea
+                  placeholder={t.messagePlaceholder}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  rows={3}
+                  className="w-full bg-slate-50/50 border border-slate-200 focus:border-brand-red rounded-[1.25rem] py-4 pl-16 pr-5 text-gray-900 focus:outline-none focus:bg-white focus:ring-4 focus:ring-brand-red/10 transition-all font-medium text-lg placeholder:text-slate-400/70 placeholder:font-medium shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)] resize-none"
                 />
               </div>
             </div>
