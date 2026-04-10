@@ -7,7 +7,7 @@ export const WhatsAppButton: React.FC = () => {
       href="https://wa.me/41762300063"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 group flex flex-col items-center gap-2"
+      className="fixed bottom-6 right-6 z-50 group hidden md:flex flex-col items-center gap-2"
       initial={{ opacity: 0, scale: 0.5, y: 50 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       whileHover={{ y: -5 }}
