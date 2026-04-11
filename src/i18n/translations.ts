@@ -140,7 +140,7 @@ export const translations = {
       contact: {
         address: 'Adlikerstrasse 30, 8105 Regensdorf (ZH)',
         tel: '043 388 82 81',
-        mob: '076 230 00 63',
+        mob: '078 817 13 68',
         email: 'info@una-reinigungen.ch'
       }
     },
@@ -406,7 +406,7 @@ export const translations = {
       contact: {
         address: 'Adlikerstrasse 30, 8105 Regensdorf (ZH)',
         tel: '043 388 82 81',
-        mob: '076 230 00 63',
+        mob: '078 817 13 68',
         email: 'info@una-reinigungen.ch'
       }
     },
