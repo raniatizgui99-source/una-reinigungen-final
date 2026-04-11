@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { Resend } from 'resend';
 import prisma from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
@@ -123,47 +124,37 @@ export async function POST(req: Request) {
     `;
 
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
-    const adminEmail = process.env.RECEIVER_EMAIL || 'info@una-reinigungen.ch';
+    const adminEmail = 'info@una-reinigungen.ch';
 
     if (RESEND_API_KEY) {
+      const resend = new Resend(RESEND_API_KEY);
+
       // 1. Send Admin Email via Resend
-      const adminResponse = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${RESEND_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          from: 'UNA Reinigungen <noreply@una-reinigungen.ch>',
-          to: adminEmail,
-          subject: `Neue Buchungsanfrage: ${formData.name}`,
-          html: renderAdminEmailHtml(),
-        })
+      const { data: adminData, error: adminError } = await resend.emails.send({
+        from: 'UNA Reinigungen <noreply@una-reinigungen.ch>',
+        to: adminEmail,
+        subject: 'New Contact Form Submission - Una Reinigungen',
+        html: renderAdminEmailHtml(),
       });
       
-      console.log(`Admin email status: ${adminResponse.status}`);
+      if (adminError) {
+        console.error("Failed Admin Resend API", adminError);
+      } else {
+        console.log(`Admin email status: Sent ID ${adminData?.id}`);
+      }
 
       // 2. Send Customer Confirmation Email via Resend
-      const customerResponse = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${RESEND_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          from: 'UNA Reinigungen <noreply@una-reinigungen.ch>',
-          to: formData.email,
-          subject: 'Ihre Anfrage bei UNA Reinigungen',
-          html: renderCustomerEmailHtml(),
-        })
+      const { data: customerData, error: customerError } = await resend.emails.send({
+        from: 'UNA Reinigungen <noreply@una-reinigungen.ch>',
+        to: formData.email,
+        subject: 'Ihre Anfrage bei UNA Reinigungen',
+        html: renderCustomerEmailHtml(),
       });
 
-      if (!adminResponse.ok || !customerResponse.ok) {
-        const adminErr = await adminResponse.text();
-        const customerErr = await customerResponse.text();
-        console.error("Failed Resend APIs", adminErr, customerErr);
+      if (customerError) {
+        console.error("Failed Customer Resend API", customerError);
       } else {
-         console.log("Emails sent successfully via Resend API.");
+        console.log(`Customer email status: Sent ID ${customerData?.id}`);
       }
 
       return NextResponse.json({ success: true, message: "Emails scheduled via Resend" });
