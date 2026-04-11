@@ -29,13 +29,19 @@ export const Header: React.FC<HeaderProps> = ({ t, currentLang, toggleLanguage, 
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { href: '#services', label: t.services },
-    { href: '#about', label: t.about },
-    { href: '#reviews', label: t.reviews },
-    { href: '#faq', label: t.faq },
+    { href: '/#services', label: t.services || 'Dienstleistungen' },
+    { href: '/#about', label: t.about || 'Über uns' },
+    { href: '/#reviews', label: t.reviews || 'Referenzen' },
+    { href: '/#faq', label: t.faq || 'FAQ' },
+    { href: '/endreinigung-regensdorf', label: 'Endreinigung Regensdorf' },
+    { href: '/endreinigung-zuerich', label: 'Endreinigung Zürich' }
   ];
 
   const handleLogoClick = () => {
+    if (window.location.pathname !== '/') {
+      window.location.href = '/';
+      return;
+    }
     if (onNavigate) {
       onNavigate('main');
     } else {
@@ -47,14 +53,27 @@ export const Header: React.FC<HeaderProps> = ({ t, currentLang, toggleLanguage, 
     e.preventDefault();
     setIsMobileMenuOpen(false);
     
+    if (href.startsWith('/endreinigung')) {
+      window.location.href = href;
+      return;
+    }
+
+    const isHashOnOtherPage = href.startsWith('/#') && window.location.pathname !== '/';
+    if (isHashOnOtherPage) {
+       window.location.href = href;
+       return;
+    }
+
+    const targetId = href.startsWith('/#') ? href.substring(1) : href;
+
     if (onNavigate) {
       onNavigate('main');
       setTimeout(() => {
-        const el = document.querySelector(href);
+        const el = document.querySelector(targetId);
         el?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
     } else {
-      const el = document.querySelector(href);
+      const el = document.querySelector(targetId);
       el?.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -90,9 +109,9 @@ export const Header: React.FC<HeaderProps> = ({ t, currentLang, toggleLanguage, 
           </button>
           
           <a 
-            href="#quote-form" 
+            href="/#quote-form" 
             className="hidden sm:flex bg-black text-white text-xs md:text-sm font-bold px-6 py-3 rounded-xl hover:bg-brand-red hover:shadow-lg hover:shadow-brand-red/20 transition-all transform hover:-translate-y-0.5 active:scale-95"
-            onClick={(e) => handleNavClick(e, '#quote-form')}
+            onClick={(e) => handleNavClick(e, '/#quote-form')}
           >
             {t.cta}
           </a>
@@ -125,10 +144,10 @@ export const Header: React.FC<HeaderProps> = ({ t, currentLang, toggleLanguage, 
             <div className="w-12 h-1 bg-brand-red/20 mx-auto rounded-full my-4"></div>
             
             <a 
-              href="#quote-form" 
+              href="/#quote-form" 
               className="mx-auto w-full max-w-sm bg-brand-red text-white text-lg font-bold py-5 rounded-2xl shadow-2xl shadow-brand-red/20 animate-in slide-in-from-bottom-8 opacity-0 [animation-fill-mode:forwards]"
               style={{ animationDelay: (navLinks.length * 50) + "ms" }}
-              onClick={(e) => handleNavClick(e, '#quote-form')}
+              onClick={(e) => handleNavClick(e, '/#quote-form')}
             >
               {t.cta}
             </a>
