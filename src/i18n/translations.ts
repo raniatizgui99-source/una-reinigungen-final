@@ -265,6 +265,25 @@ export const translations = {
     stickyCTA: {
       call: 'Anrufen',
       quote: 'Fixpreis berechnen'
+    },
+    seo: {
+      heroSub: "Professionelle Endreinigung mit 100% Abnahmegarantie in {city} und Umgebung. Fixpreis, keine versteckten Kosten.",
+      heroCta: "Jetzt Offerte anfordern",
+      whatIsTitle: "Was ist eine Endreinigung?",
+      whatIsText: "In der Schweiz sind Mieter gesetzlich verpflichtet, ihre Wohnung bei Auszug in makellosem Zustand zurückzugeben. Eine professionelle Endreinigung in {city} durch UNA Reinigungen garantiert die erfolgreiche Wohnungsabgabe ohne Mängel. Ohne eine gründliche und fachgerechte Reinigung riskieren Mieter, dass die Verwaltung die Abnahme verweigert und Tausende von Franken von der Mietkaution einbehalten werden.",
+      includedTitle: "Was ist im Preis inbegriffen?",
+      areaTitle: "Unser Einsatzgebiet in {city}",
+      whyTitle: "Warum UNA Reinigungen in {city}?",
+      whyPoints: {
+        p1: "100% Abnahmegarantie",
+        p2: "Fixpreis-Garantie",
+        p3: "Regionale Präsenz",
+        p4: "Über 1000 erfolgreiche Übergaben",
+        p5: "Vollversichert"
+      },
+      contactTitle: "Jetzt Endreinigung {city} anfragen",
+      contactText: "Erhalten Sie in 60 Sekunden Ihren kostenlosen Fixpreis. Abnahmegarantie inklusive.",
+      ctaButton: "Fixpreis berechnen"
     }
   },
   en: {
@@ -531,6 +550,25 @@ export const translations = {
     stickyCTA: {
       call: 'Call',
       quote: 'Get Fixed Price'
+    },
+    seo: {
+      heroSub: "Professional end of tenancy cleaning with 100% handover guarantee in {city} and surroundings. Fair fixed price, no hidden costs.",
+      heroCta: "Request quote now",
+      whatIsTitle: "What is an end of tenancy cleaning?",
+      whatIsText: "In Switzerland, tenants are legally required to return their apartment in perfect condition when moving out. Professional end of tenancy cleaning in {city} by UNA Reinigungen guarantees a successful apartment handover without defects. Without a thorough professional cleaning, tenants risk the property management refusing acceptance and retaining thousands of francs from the deposit.",
+      includedTitle: "What is included in the price?",
+      areaTitle: "Our service area in {city}",
+      whyTitle: "Why choose UNA Reinigungen in {city}?",
+      whyPoints: {
+        p1: "100% Handover Guarantee",
+        p2: "Fixed Price Guarantee",
+        p3: "Regional Presence",
+        p4: "Over 1000 successful handovers",
+        p5: "Fully insured"
+      },
+      contactTitle: "Request {city} End of Tenancy Cleaning now",
+      contactText: "Receive your free fixed price quote in 60 seconds. Handover guarantee included.",
+      ctaButton: "Calculate fixed price"
     }
   }
 };

@@ -8,9 +8,11 @@ export const metadata: Metadata = {
 
 export default function RegensdorfPage() {
   return (
-    <SEOLandingPage 
-      city="Regensdorf" 
-      areaText="Wir sind in Regensdorf zu Hause und reinigen im gesamten Umkreis von 20km."
+    <SEOLandingPage
+      cityDe="Regensdorf"
+      cityEn="Regensdorf"
+      areaTextDe="Wir sind in Regensdorf zu Hause und reinigen im gesamten Umkreis von 20km."
+      areaTextEn="We are based in Regensdorf and clean within a radius of 20km."
       areas={['Regensdorf', 'Dällikon', 'Buchs', 'Otelfingen', 'Würenlos', 'Weiningen', 'Unterengstringen', 'Dietikon', 'Baden', 'Zürich']}
     />
   );

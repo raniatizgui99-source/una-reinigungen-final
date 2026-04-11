@@ -8,9 +8,11 @@ export const metadata: Metadata = {
 
 export default function ZuerichPage() {
   return (
-    <SEOLandingPage 
-      city="Zürich" 
-      areaText="Wir bedienen alle Stadtkreise in Zürich sowie die umliegenden Gemeinden."
+    <SEOLandingPage
+      cityDe="Zürich"
+      cityEn="Zurich"
+      areaTextDe="Wir bedienen alle Stadtkreise in Zürich sowie die umliegenden Gemeinden."
+      areaTextEn="We serve all city districts in Zurich as well as the surrounding municipalities."
       areas={['Zürich City', 'Oerlikon', 'Altstetten', 'Wiedikon', 'Affoltern', 'Seebach', 'Schwamendingen', 'Dietikon', 'Schlieren', 'Regensdorf']}
     />
   );

@@ -33,8 +33,6 @@ export const Header: React.FC<HeaderProps> = ({ t, currentLang, toggleLanguage, 
     { href: '/#about', label: t.about || 'Über uns' },
     { href: '/#reviews', label: t.reviews || 'Referenzen' },
     { href: '/#faq', label: t.faq || 'FAQ' },
-    { href: '/endreinigung-regensdorf', label: 'Endreinigung Regensdorf' },
-    { href: '/endreinigung-zuerich', label: 'Endreinigung Zürich' }
   ];
 
   const handleLogoClick = () => {
