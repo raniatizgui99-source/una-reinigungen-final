@@ -78,7 +78,7 @@ export const FAQ: React.FC<FAQProps> = ({ t }) => {
               <a href="tel:0433888281" className="w-full sm:w-auto min-w-[200px] bg-white/10 backdrop-blur-md border border-white/20 px-8 py-5 rounded-2xl font-black hover:bg-white hover:text-black transition-all text-white text-center text-sm md:text-base tracking-[0.2em] uppercase">
                 {t.callUs}
               </a>
-              <a href="mailto:info@una-reinigungen.ch" className="w-full sm:w-auto min-w-[200px] bg-brand-red text-white px-8 py-5 rounded-2xl font-black hover:bg-red-700 transition-all shadow-xl shadow-brand-red/20 text-center text-sm md:text-base tracking-[0.2em] uppercase">
+              <a href="mailto:info@una-reinigungen.ch" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto min-w-[200px] bg-brand-red text-white px-8 py-5 rounded-2xl font-black hover:bg-red-700 transition-all shadow-xl shadow-brand-red/20 text-center text-sm md:text-base tracking-[0.2em] uppercase">
                 {t.emailUs}
               </a>
            </div>

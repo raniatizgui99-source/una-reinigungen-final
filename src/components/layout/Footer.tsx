@@ -56,7 +56,7 @@ export const Footer: React.FC<FooterProps> = ({ t, currentLang, toggleLanguage, 
               </p>
               <p className="flex items-center gap-4 hover:text-white transition-colors">
                 <Mail size={20} className="text-brand-red shrink-0" />
-                <a href="mailto:info@una-reinigungen.ch">info@una-reinigungen.ch</a>
+                <a href="mailto:info@una-reinigungen.ch" target="_blank" rel="noopener noreferrer">info@una-reinigungen.ch</a>
               </p>
             </div>
           </div>
