@@ -33,7 +33,7 @@ const SEOContent: React.FC<SEOProps> = ({ cityDe, cityEn, areaTextDe, areaTextEn
         {/* Section 1 — Hero */}
         <section className="px-6 py-20 text-center max-w-4xl mx-auto">
           <h1 className="text-5xl sm:text-6xl md:text-[5rem] font-black tracking-tighter text-black mb-6 leading-tight">
-            {lang === 'de' ? `Endreinigung ${city}` : `End of Tenancy Cleaning ${city}`}
+            {fill(seo.heroTitle)}
           </h1>
           <p className="text-xl md:text-2xl text-black/60 font-medium mb-12 max-w-2xl mx-auto">
             {fill(seo.heroSub)}

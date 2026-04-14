@@ -58,8 +58,8 @@ export const WhyUs: React.FC<WhyUsProps> = ({ t }) => {
         {/* Unsere Standorte */}
         <div className="mt-24 md:mt-32">
           <div className="text-center mb-16 space-y-6">
-            <span className="text-sm font-bold uppercase tracking-[0.3em] text-brand-red">Standorte</span>
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter text-black">Unsere Standorte</h3>
+            <span className="text-sm font-bold uppercase tracking-[0.3em] text-brand-red">{t.locations.label}</span>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter text-black">{t.locations.title}</h3>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -68,12 +68,12 @@ export const WhyUs: React.FC<WhyUsProps> = ({ t }) => {
               <div className="w-20 h-20 bg-brand-red/10 rounded-full flex items-center justify-center text-brand-red mb-6 group-hover:scale-110 transition-transform duration-500">
                 <MapPin size={32} />
               </div>
-              <h4 className="text-2xl sm:text-3xl font-black tracking-tight mb-4">Endreinigung Regensdorf</h4>
+              <h4 className="text-2xl sm:text-3xl font-black tracking-tight mb-4">{t.locations.regensdorf.title}</h4>
               <p className="text-black/60 font-medium leading-relaxed mb-8 flex-grow">
-                Professionelle Endreinigung in Regensdorf und Umgebung. Fixpreis, Abnahmegarantie inklusive.
+                {t.locations.regensdorf.desc}
               </p>
               <a href="/endreinigung-regensdorf" className="w-full sm:w-auto bg-black text-white px-8 py-4 rounded-xl font-bold hover:bg-brand-red transition-colors shadow-lg active:scale-95">
-                Mehr erfahren
+                {t.locations.regensdorf.cta}
               </a>
             </div>
 
@@ -82,12 +82,12 @@ export const WhyUs: React.FC<WhyUsProps> = ({ t }) => {
               <div className="w-20 h-20 bg-brand-red/10 rounded-full flex items-center justify-center text-brand-red mb-6 group-hover:scale-110 transition-transform duration-500">
                 <MapPin size={32} />
               </div>
-              <h4 className="text-2xl sm:text-3xl font-black tracking-tight mb-4">Endreinigung Zürich</h4>
+              <h4 className="text-2xl sm:text-3xl font-black tracking-tight mb-4">{t.locations.zuerich.title}</h4>
               <p className="text-black/60 font-medium leading-relaxed mb-8 flex-grow">
-                Professionelle Endreinigung in Zürich und Umgebung. Fixpreis, Abnahmegarantie inklusive.
+                {t.locations.zuerich.desc}
               </p>
               <a href="/endreinigung-zuerich" className="w-full sm:w-auto bg-black text-white px-8 py-4 rounded-xl font-bold hover:bg-brand-red transition-colors shadow-lg active:scale-95">
-                Mehr erfahren
+                {t.locations.zuerich.cta}
               </a>
             </div>
           </div>

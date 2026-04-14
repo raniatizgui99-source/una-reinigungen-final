@@ -30,7 +30,21 @@ export const translations = {
         { title: '100% Abnahmegarantie', desc: 'Wir sind bei der Übergabe dabei. Sollte etwas nicht perfekt sein, wir reinigen sofort kostenlos nach. Umzugsreinigung mit Abnahmegarantie ist unser Standard.' },
         { title: 'Fixpreis-Garantie', desc: 'Keine versteckten Kosten. Ob Endreinigung mit Abnahmegarantie Regensdorf oder Umgebung – Sie zahlen genau das, was wir offerieren.' },
         { title: 'Regionale Präsenz', desc: 'Wir sind in Regensdorf zu Hause und bedienen Kunden im Umkreis von 20km. Schnell, zuverlässig und professionell.' }
-      ]
+      ],
+      locations: {
+        label: 'Standorte',
+        title: 'Unsere Standorte',
+        regensdorf: {
+          title: 'Endreinigung Regensdorf',
+          desc: 'Professionelle Endreinigung in Regensdorf und Umgebung. Fixpreis, Abnahmegarantie inklusive.',
+          cta: 'Mehr erfahren'
+        },
+        zuerich: {
+          title: 'Endreinigung Zürich',
+          desc: 'Professionelle Endreinigung in Zürich und Umgebung. Fixpreis, Abnahmegarantie inklusive.',
+          cta: 'Mehr erfahren'
+        }
+      }
     },
     process: {
       title: 'In 3 Schritten zur sauberen Wohnung',
@@ -268,6 +282,7 @@ export const translations = {
       quote: 'Fixpreis berechnen'
     },
     seo: {
+      heroTitle: "Endreinigung {city}",
       heroSub: "Professionelle Endreinigung mit 100% Abnahmegarantie in {city} und Umgebung. Fixpreis, keine versteckten Kosten.",
       heroCta: "Jetzt Offerte anfordern",
       whatIsTitle: "Was ist eine Endreinigung?",
@@ -316,7 +331,21 @@ export const translations = {
         { title: '100% Handover Guarantee', desc: 'We are present during the handover. If anything is not perfect, we will re-clean immediately for free. Move-out cleaning with handover guarantee is our standard.' },
         { title: 'Fixed Price Guarantee', desc: 'No hidden costs. Whether it is final cleaning with guarantee in Regensdorf or surroundings – you pay exactly what we quote.' },
         { title: 'Regional Presence', desc: 'We are at home in Regensdorf and serve customers within a 20km radius. Fast, reliable, and professional.' }
-      ]
+      ],
+      locations: {
+        label: 'Locations',
+        title: 'Our Locations',
+        regensdorf: {
+          title: 'Regensdorf Final Cleaning',
+          desc: 'Professional end of tenancy cleaning in Regensdorf and surroundings. Fixed price, handover guarantee included.',
+          cta: 'Learn more'
+        },
+        zuerich: {
+          title: 'Zurich Final Cleaning',
+          desc: 'Professional end of tenancy cleaning in Zurich and surroundings. Fixed price, handover guarantee included.',
+          cta: 'Learn more'
+        }
+      }
     },
     process: {
       title: 'In 3 Steps to a Clean Apartment',
@@ -554,6 +583,7 @@ export const translations = {
       quote: 'Get Fixed Price'
     },
     seo: {
+      heroTitle: "End of Tenancy Cleaning {city}",
       heroSub: "Professional end of tenancy cleaning with 100% handover guarantee in {city} and surroundings. Fair fixed price, no hidden costs.",
       heroCta: "Request quote now",
       whatIsTitle: "What is an end of tenancy cleaning?",
