@@ -4,14 +4,15 @@ export const translations = {
   de: {
     header: {
       services: 'Dienstleistungen',
+      standorte: 'Standorte',
       about: 'Über uns',
       faq: 'FAQ',
       reviews: 'Referenzen',
       cta: 'Fixpreis berechnen',
     },
     hero: {
-      h1: 'Volle Kaution zurück —\ngarantiert.',
-      sub: 'Wir übernehmen die komplette Endreinigung Ihrer Wohnung in Regensdorf und Umgebung. Wird die Wohnung nicht abgenommen, reinigen wir kostenlos nach. Zum fairen Fixpreis, ohne versteckte Kosten.',
+      h1: 'Endreinigung in Regensdorf & Zürich mit 100 % Abnahmegarantie',
+      sub: 'Fixpreis in 2 Minuten – jetzt Angebot per WhatsApp',
       cta: 'In 60 Sekunden zur Offerte',
       secondary: 'Über 1000 erfolgreiche Wohnungsübergaben',
       locationInfo: 'Regensdorf & 20km Umkreis',
@@ -289,14 +290,15 @@ export const translations = {
   en: {
     header: {
       services: 'Services',
+      standorte: 'Locations',
       about: 'About Us',
       faq: 'FAQ',
       reviews: 'Reviews',
       cta: 'Get Fixed Price',
     },
     hero: {
-      h1: 'Full Deposit Back —\nguaranteed.',
-      sub: 'We handle the complete final cleaning of your apartment in Regensdorf and surroundings. If the apartment is not accepted, we re-clean for free. Fair fixed price, no hidden costs.',
+      h1: 'End of Tenancy Cleaning in Regensdorf & Zurich with 100% Handover Guarantee',
+      sub: 'Fixed price in 2 minutes – get your quote via WhatsApp now.',
       cta: 'Get Quote in 60 Seconds',
       secondary: 'Over 1000 successful apartment handovers',
       locationInfo: 'Regensdorf & 20km radius',

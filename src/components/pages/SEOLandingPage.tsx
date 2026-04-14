@@ -39,7 +39,7 @@ const SEOContent: React.FC<SEOProps> = ({ cityDe, cityEn, areaTextDe, areaTextEn
             {fill(seo.heroSub)}
           </p>
           <a
-            href="#contact"
+            href="https://una-reinigungen.ch/#quote-form"
             className="inline-flex items-center gap-3 bg-brand-red text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-[0_10px_30px_rgba(201,48,44,0.3)]"
           >
             {seo.heroCta}

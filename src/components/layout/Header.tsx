@@ -29,9 +29,10 @@ export const Header: React.FC<HeaderProps> = ({ t, currentLang, toggleLanguage, 
   }, [isMobileMenuOpen]);
 
   const navLinks = [
+    { href: '/#standorte', label: t.standorte || 'Standorte' },
+    { href: '/#reviews', label: t.reviews || 'Referenzen' },
     { href: '/#services', label: t.services || 'Dienstleistungen' },
     { href: '/#about', label: t.about || 'Über uns' },
-    { href: '/#reviews', label: t.reviews || 'Referenzen' },
     { href: '/#faq', label: t.faq || 'FAQ' },
   ];
 

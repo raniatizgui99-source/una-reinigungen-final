@@ -9,7 +9,7 @@ const icons = [Zap, MapPin, Star];
 
 export const WhyUs: React.FC<WhyUsProps> = ({ t }) => {
   return (
-    <div className="bg-brand-cream/30 py-32 md:py-40 px-6 relative overflow-hidden">
+    <div id="standorte" className="bg-brand-cream/30 py-32 md:py-40 px-6 relative overflow-hidden">
       {/* Abstract Background Blur */}
       <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-brand-red/5 rounded-full blur-[120px] pointer-events-none"></div>
 
