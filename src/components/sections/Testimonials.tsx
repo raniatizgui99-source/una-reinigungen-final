@@ -106,7 +106,7 @@ export const Testimonials: React.FC<TestimonialsProps> = () => {
           </h2>
           
           <div className="flex items-center gap-4 bg-white px-8 py-4 rounded-3xl shadow-md border border-gray-100">
-             <div className="text-4xl font-black text-gray-900">5.0</div>
+             <div className="text-4xl font-black text-gray-900">4.8</div>
              <div className="flex flex-col gap-1">
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, i) => (
