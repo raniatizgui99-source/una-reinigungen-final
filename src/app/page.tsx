@@ -4,6 +4,7 @@ import { Header } from '@/components/layout/Header';
 import { Hero } from '@/components/sections/Hero';
 import { WhyUs } from '@/components/sections/WhyUs';
 import { Services } from '@/components/sections/Services';
+import { PhotoQuote } from '@/components/sections/PhotoQuote';
 import { About } from '@/components/sections/About';
 import { FAQ } from '@/components/sections/FAQ';
 import { Guarantee } from '@/components/sections/Guarantee';
@@ -70,6 +71,8 @@ const MainApp: React.FC = () => {
           <section id="why-us" className="bg-white border-y border-brand-cream">
             <WhyUs t={t.whyUs} />
           </section>
+
+          <PhotoQuote />
 
           <section id="reviews">
             <Testimonials />

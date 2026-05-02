@@ -50,6 +50,7 @@ export const HeroForm: React.FC<HeroFormProps> = ({ t }) => {
           (window as any).gtag('event', 'conversion', {
             'send_to': 'AW-11462828452/Tra_enje_ponude_1'
           });
+          (window as any).gtag('event', 'form_submit', { event_category: 'lead' });
         }
         setIsSubmitted(true);
       }

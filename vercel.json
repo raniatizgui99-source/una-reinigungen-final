@@ -1,0 +1,7 @@
+{
+  "redirects": [
+    { "source": "/preis", "destination": "/#quote-form", "permanent": true },
+    { "source": "/kontakt", "destination": "/#quote-form", "permanent": true },
+    { "source": "/reinigung", "destination": "/", "permanent": true }
+  ]
+}

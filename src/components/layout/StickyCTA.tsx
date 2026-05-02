@@ -26,6 +26,11 @@ export const StickyCTA: React.FC<StickyCTAProps> = () => {
       <div className="flex gap-3 max-w-lg mx-auto">
         <a
           href="tel:0433888281"
+          onClick={() => {
+            if (typeof window !== 'undefined' && (window as any).gtag) {
+              (window as any).gtag('event', 'phone_click', { event_category: 'engagement' });
+            }
+          }}
           className="flex-1 flex items-center justify-center gap-2 bg-white border-2 border-brand-red text-brand-red font-bold py-3 rounded-xl active:scale-95 transition-all text-sm"
         >
           <Phone size={18} />

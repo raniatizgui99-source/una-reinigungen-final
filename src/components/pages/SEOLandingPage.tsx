@@ -14,13 +14,22 @@ interface SEOProps {
   areaTextDe: string;
   areaTextEn: string;
   areas: string[];
+  customHeroSubDe?: string;
+  customHeroSubEn?: string;
+  customLocalTeamDe?: string;
+  customLocalTeamEn?: string;
+  localFaqDe?: { question: string; answer: string }[];
+  localFaqEn?: { question: string; answer: string }[];
 }
 
-const SEOContent: React.FC<SEOProps> = ({ cityDe, cityEn, areaTextDe, areaTextEn, areas }) => {
+const SEOContent: React.FC<SEOProps> = ({ cityDe, cityEn, areaTextDe, areaTextEn, areas, customHeroSubDe, customHeroSubEn, customLocalTeamDe, customLocalTeamEn, localFaqDe, localFaqEn }) => {
   const { lang, t, toggleLanguage } = useTranslation();
   const seo = (t as any).seo;
   const city = lang === 'de' ? cityDe : cityEn;
   const areaText = lang === 'de' ? areaTextDe : areaTextEn;
+  const customHeroSub = lang === 'de' ? customHeroSubDe : customHeroSubEn;
+  const customLocalTeam = lang === 'de' ? customLocalTeamDe : customLocalTeamEn;
+  const localFaq = lang === 'de' ? localFaqDe : localFaqEn;
 
   const fill = (str: string) => str.replace(/{city}/g, city);
 
@@ -36,7 +45,7 @@ const SEOContent: React.FC<SEOProps> = ({ cityDe, cityEn, areaTextDe, areaTextEn
             {fill(seo.heroTitle)}
           </h1>
           <p className="text-xl md:text-2xl text-black/60 font-medium mb-12 max-w-2xl mx-auto">
-            {fill(seo.heroSub)}
+            {customHeroSub || fill(seo.heroSub)}
           </p>
           <a
             href="https://una-reinigungen.ch/#quote-form"
@@ -56,6 +65,11 @@ const SEOContent: React.FC<SEOProps> = ({ cityDe, cityEn, areaTextDe, areaTextEn
             <p className="text-lg text-black/70 font-medium leading-relaxed">
               {fill(seo.whatIsText)}
             </p>
+            {customLocalTeam && (
+              <p className="text-lg text-brand-red font-bold mt-4">
+                {customLocalTeam}
+              </p>
+            )}
           </div>
         </section>
 
@@ -163,6 +177,25 @@ const SEOContent: React.FC<SEOProps> = ({ cityDe, cityEn, areaTextDe, areaTextEn
         <section className="bg-white">
           <Testimonials />
         </section>
+
+        {/* Local FAQ Section (if provided) */}
+        {localFaq && localFaq.length > 0 && (
+          <section className="bg-brand-cream/30 py-24 px-6 border-y border-white/20">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-black mb-12 text-center">
+                Lokale Fragen zu {city}
+              </h2>
+              <div className="space-y-6">
+                {localFaq.map((faq, idx) => (
+                  <div key={idx} className="bg-white rounded-[2rem] p-8 shadow-sm">
+                    <h3 className="text-xl font-bold mb-4">{faq.question}</h3>
+                    <p className="text-black/70 leading-relaxed">{faq.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Section 7 — Clean CTA (NO form) */}
         <section id="contact" className="bg-black py-28 px-6 relative overflow-hidden">

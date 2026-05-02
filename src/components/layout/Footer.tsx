@@ -48,11 +48,29 @@ export const Footer: React.FC<FooterProps> = ({ t, currentLang, toggleLanguage, 
               </p>
               <p className="flex items-center gap-4 hover:text-white transition-colors">
                 <Phone size={20} className="text-brand-red shrink-0" />
-                <a href={`tel:${t.contact.tel.replace(/\s/g, '')}`}>{t.contact.tel}</a>
+                <a 
+                  href={`tel:${t.contact.tel.replace(/\s/g, '')}`}
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).gtag) {
+                      (window as any).gtag('event', 'phone_click', { event_category: 'engagement' });
+                    }
+                  }}
+                >
+                  {t.contact.tel}
+                </a>
               </p>
               <p className="flex items-center gap-4 hover:text-white transition-colors">
                 <Phone size={20} className="text-brand-red shrink-0" />
-                <a href={`tel:${t.contact.mob.replace(/\s/g, '')}`}>{t.contact.mob}</a>
+                <a 
+                  href={`tel:${t.contact.mob.replace(/\s/g, '')}`}
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).gtag) {
+                      (window as any).gtag('event', 'whatsapp_click', { event_category: 'engagement' });
+                    }
+                  }}
+                >
+                  {t.contact.mob}
+                </a>
               </p>
               <p className="flex items-center gap-4 hover:text-white transition-colors">
                 <Mail size={20} className="text-brand-red shrink-0" />
